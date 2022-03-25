@@ -20,8 +20,6 @@ public class Inventory {
      private String image;
      private boolean isSold = false;
      
-     
-     
 	public Inventory() {
 		super();
 		// TODO Auto-generated constructor stub

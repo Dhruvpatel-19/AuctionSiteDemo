@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -12,6 +14,7 @@ import javax.persistence.OneToMany;
 public class Bidder {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String password;
@@ -53,6 +56,12 @@ public class Bidder {
 		this.contact = contact;
 	}
     
-   
+	public List<Inventory> getAuction_items() {
+		return auction_items;
+	}
+	public void setAuction_items(List<Inventory> auction_items) {
+		this.auction_items = auction_items;
+	}
+
 
 }
