@@ -49,8 +49,5 @@ public class BidderController {
 		//return "bidderSignUp";
 	}
 	
-	@RequestMapping(value ="/auctionCatalog" , method = RequestMethod.GET )
-	public String auctionCatalog() {
-		return "auctionCatalog";
-	}
+	
 }

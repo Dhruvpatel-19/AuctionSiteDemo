@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -19,10 +21,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class AuctionEvent {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int event_id;
-	private String category;
 	
-
+	private String eventName;
 	private String email;
     private String contact;
     
@@ -46,12 +48,7 @@ public class AuctionEvent {
 	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
 	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
+	
 	
 	public String getEmail() {
 		return email;
@@ -82,6 +79,19 @@ public class AuctionEvent {
 	}
 	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
+	}
+	
+	public String getEventName() {
+		return eventName;
+	}
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
+	public List<Inventory> getAuction_items() {
+		return auction_items;
+	}
+	public void setAuction_items(List<Inventory> auction_items) {
+		this.auction_items = auction_items;
 	}
 	
 	
