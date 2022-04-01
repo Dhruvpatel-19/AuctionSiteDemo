@@ -11,10 +11,13 @@ import com.example.demo.controller.CatalogController;
 public class AuctionSiteApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Dir = "+ CatalogController.uploadingdDir);
-		new File(CatalogController.uploadingdDir).mkdir();
+		
+		new File(CatalogController.uploadingdDirAuction).mkdir();
+		new File(CatalogController.uploadingdDirInventory).mkdir();
 		SpringApplication.run(AuctionSiteApplication.class, args);
-		System.out.println("App Started..");
+		System.out.println("App Started...");
+		System.out.println("DirAuction = "+ CatalogController.uploadingdDirAuction);
+		System.out.println("DirInventory = "+ CatalogController.uploadingdDirInventory);
 	}
 
 }

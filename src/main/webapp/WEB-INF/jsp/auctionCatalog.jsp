@@ -29,7 +29,7 @@
                 <form method="POST" enctype="multipart/form-data" action="/auctionhouse/auction" id="auctionform" name="auctionform">
                      <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Event Name<span class="text-danger"> *</span></label> <input type="text" id="fname" name="eventName" placeholder="Enter event name" onblur="validate(1)"> </div>
-                        
+                       <!--<div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Event description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descc" placeholder="Enter the Description" onblur="validate(5)" > </div>  -->
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="Enter Email" onblur="validate(3)"> </div>
@@ -37,12 +37,19 @@
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Start Date<span class="text-danger"> *</span></label> <input type="date" id="job" name="startDate" placeholder="" onblur="validate(5)"> </div>
+              
                     </div>
                     <div class="row justify-content-between text-left">
                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Start Time<span class="text-danger"> *</span></label> <input type="time" id="fname" name="startTime" placeholder="Enter start time" onblur="validate(1)"> </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">End Time<span class="text-danger"> *</span></label> <input type="time" id="lname" name="endTime" placeholder="Enter end time" onblur="validate(2)"> </div> 
                    
                     </div>
+                    
+                	<div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                        <label class="form-control-label px-3">Select Image of the Item<span class="text-danger"> *</span></label> 
+                        <input type="file" id="auctionImage" name="auctionImage" placeholder="Choose File" onblur="validate(1)" > </div>
+                    </div>                    
                     
                     <br> 
                      <hr class="dashed">
@@ -53,9 +60,6 @@
                      <div class="row justify-content-end">
                    	<div class="form-group col-sm-5">
                    	 <input type="button"  id="addRow" value ="Add Another Item" style="width:270px;" class="btn-block btn-primary"> </div>
-                   
-                   
-                   
                     </div>
                      
                      <div class="row justify-content-between text-left">
@@ -68,7 +72,7 @@
                     <div class="row justify-content-between text-left">
                         
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter the initial bid:<span class="text-danger"> *</span></label> <input type="text" id="mob" name="start_bid" placeholder="Enter Initial Bid" onblur="validate(4)"> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product/Item description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descc" placeholder="Enter the Description" onblur="validate(5)" > </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product/Item description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descInventory" placeholder="Enter the Description" onblur="validate(5)" > </div>
                     </div>
 
 								<div class="input-group">
@@ -108,15 +112,15 @@ $("#addRow").click(function () {
     html += '<div class="row justify-content-between text-left">';
     html += '<div class="form-group col-sm-6 flex-column d-flex">'; 
     html += '<label class="form-control-label px-3">Select Image of the Item<span class="text-danger"> *</span></label>';
-    html += '<input type="file" id="itemImage" name="itemImage" placeholder="Choose File" onblur="validate(1)" > </div>';
+    html += '<input type="file" id="itemImage" name="image" placeholder="Choose File" onblur="validate(1)" > </div>';
     <!-- <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(2)"> </div> -->
-    html += '<div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product/Item name:<span class="text-danger"> *</span></label> <input type="text" id="name" name="itemName" placeholder="Enter Item Name" onblur="validate(3)"> </div>';
+    html += '<div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product/Item name:<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="Enter Item Name" onblur="validate(3)"> </div>';
     html += '</div>';
   
     html +=  ' <div class="row justify-content-between text-left">';
     
-    html +=' <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter the initial bid:<span class="text-danger"> *</span></label> <input type="text" id="mob" name="start_Bid" placeholder="Enter Initial Bid" onblur="validate(4)"> </div>';
-    html += '<div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product/Item description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descc" placeholder="Enter the Description" onblur="validate(5)" > </div>';
+    html +=' <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Enter the initial bid:<span class="text-danger"> *</span></label> <input type="text" id="mob" name="start_bid" placeholder="Enter Initial Bid" onblur="validate(4)"> </div>';
+    html += '<div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Product/Item description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descInventory" placeholder="Enter the Description" onblur="validate(5)" > </div>';
     html += '</div>';
     html += '<div class="input-group">';
     html += ' <button id="removeRow" type="button" class="btn btn-danger">remove this product</button>';

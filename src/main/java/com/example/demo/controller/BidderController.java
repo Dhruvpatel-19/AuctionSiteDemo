@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Bidder;
 import com.example.demo.entity.Inventory;
+import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.BidderRepository;
 import com.example.demo.repository.InventoryRepository;
 
@@ -19,6 +23,9 @@ import com.example.demo.repository.InventoryRepository;
 public class BidderController {
 	@Autowired
 	private BidderRepository repo;
+	
+	@Autowired
+	private AuctionEventRepository auctionRepo;
 	
 	@Autowired
 	private InventoryRepository repoInventory ; 
@@ -42,11 +49,19 @@ public class BidderController {
 	}
 	
 	
-	@RequestMapping(value = "/inventory/add" , method = RequestMethod.POST )
+	/*@RequestMapping(value = "/inventory/add" , method = RequestMethod.POST )
 	public void addInventory(@RequestBody Inventory i ) {
 		System.out.println("Inventory added");
 		repoInventory.save(i);
 		//return "bidderSignUp";
+	}*/
+	
+	
+	@RequestMapping( value = "/bidder/dashboard" , method = RequestMethod.GET)
+	public String bidderDashboard(Model model) {
+		List<AuctionEvent> auctionList = auctionRepo.findAll(); 
+		model.addAttribute("auctionList", auctionList);
+		return "bidderDashboard";
 	}
 	
 	

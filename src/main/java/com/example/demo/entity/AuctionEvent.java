@@ -27,6 +27,8 @@ public class AuctionEvent {
 	private String eventName;
 	private String email;
     private String contact;
+    private String autionImage;
+    //private String descc;
     
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate startDate;
@@ -93,6 +95,14 @@ public class AuctionEvent {
 	public void setAuction_items(List<Inventory> auction_items) {
 		this.auction_items = auction_items;
 	}
+	public String getAutionImage() {
+		return autionImage;
+	}
+	public void setAutionImage(String autionImage) {
+		this.autionImage = autionImage;
+	}
+	
+	
 	
 	
 	

@@ -15,7 +15,7 @@ public class Inventory {
      
      private int lot_id;
      private int start_bid;
-     private String descc;
+     private String descInventory;
      private String name;
      private String image;
      private boolean isSold = false;
@@ -26,13 +26,13 @@ public class Inventory {
 	}         
 
 
-	public Inventory(int inventory_id, int lot_id, int start_bid, String descc, String name, String image,
+	public Inventory(int inventory_id, int lot_id, int start_bid, String descInventory, String name, String image,
 			boolean isSold) {
 		super();
 		this.inventory_id = inventory_id;
 		this.lot_id = lot_id;
 		this.start_bid = start_bid;
-		this.descc = descc;
+		this.descInventory = descInventory;
 		this.name = name;
 		this.image = image;
 		this.isSold = isSold;
@@ -69,13 +69,15 @@ public class Inventory {
 	}
 
 
-	public String getDescc() {
-		return descc;
+	
+
+	public String getDescInventory() {
+		return descInventory;
 	}
 
 
-	public void setDescc(String descc) {
-		this.descc = descc;
+	public void setDescInventory(String descInventory) {
+		this.descInventory = descInventory;
 	}
 
 
