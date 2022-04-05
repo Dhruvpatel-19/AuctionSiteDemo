@@ -24,6 +24,11 @@ body {
    
 }
 
+.message{
+	color:#ffffff;
+	margin-left : 20%;
+}
+
 .frame {
     height: 775px;
     width: 430px;

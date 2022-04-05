@@ -23,6 +23,11 @@ body {
     top : -60px;
 }
 
+.message{
+	color:#ffffff;
+	margin-left : 20%;
+}
+
 .frame {
     
     height: 490px; 

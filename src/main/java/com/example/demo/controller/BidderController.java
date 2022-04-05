@@ -40,13 +40,19 @@ public class BidderController {
 		return "bidderSignUp";
 	}
 	 
-	@ResponseBody
+	
 	@RequestMapping(value = "/bidder/signUp" , method = RequestMethod.POST )
-	public String bidderSignUpAfter(@ModelAttribute Bidder b) {
+	public String bidderSignUpAfter(@ModelAttribute Bidder b , Model m) {
+		
+		if(bidderRepo.existsByEmail(b.getEmail())) {
+			m.addAttribute("message", "email already exists , try another one");
+			return "bidderSignUp";
+		}
 		System.out.println("Bidder added");
 		bidderRepo.save(b);
-		//return "redirect:/home";
-		return "Bidder Added Successfully";
+	
+		m.addAttribute("message", "Signed Up Successfully");
+		return "bidderSignIn";
 	}
 	
 	@RequestMapping(value = "/bidder/signIn" , method = RequestMethod.GET )
@@ -54,12 +60,44 @@ public class BidderController {
 		return "bidderSignIn";
 	}
 	
-	/*@RequestMapping(value = "/inventory/add" , method = RequestMethod.POST )
-	public void addInventory(@RequestBody Inventory i ) {
-		System.out.println("Inventory added");
-		repoInventory.save(i);
-		//return "bidderSignUp";
+	/*@ResponseBody
+	@RequestMapping(value = "/bidder/signIn" , method = RequestMethod.POST)
+	public String bidderSignInPost(@ModelAttribute("bidder1") Bidder b) {
+		
+		
+		  Bidder bidder = bidderRepo.findByEmail(b.getEmail());
+		  
+		  if(b.getPassword().equals(bidder.getPassword()))
+		  { return "Sign in successful"; }
+		 
+		
+		return "bidderSignIn";
 	}*/
+	
+	
+	@RequestMapping(value = "/bidder/signIn" , method = RequestMethod.POST)
+	public String bidderSignInPost(@RequestParam("email") String email , @RequestParam("password")String password ,  Model m) {
+		
+		  
+		  if(!bidderRepo.existsByEmail(email)) {
+				m.addAttribute("message", "email doesn't exists , Sign up here");
+				return "bidderSignUp";
+			}
+		  
+		  Bidder bidder = bidderRepo.findByEmail(email);
+		  
+		  if(password.equals(bidder.getPassword()))
+		  { 
+			  System.out.println(password +" type: " +password.getClass().getSimpleName());
+			  System.out.println(bidder.getPassword() +" type: "+ bidder.getPassword().getClass().getSimpleName());
+			  return "bidderDashboard"; 
+		 }
+		 
+		 m.addAttribute("message", "Wrong Credentials! , try again");
+		 return "bidderSignIn";
+		  
+	}
+	
 	
 	
 	@RequestMapping( value = "/bidder/dashboard" , method = RequestMethod.GET)

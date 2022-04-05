@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +24,18 @@
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="" method="post" name="form"> 
+                <form class="form-signin" action="/seller/signIn" method="post" name="form"> 
+                  
+                  	<c:if test="${message.length()>0}">
+						<p class="message">${message}</p>
+				    </c:if> 
+					  
                     <label for="email">Email</label> 
                     <input class="form-styling" type="text" name="email" placeholder="" />  
                     <label for="password">Password</label> 
                     <input class="form-styling" type="text" name="password" placeholder="" /> 
                    
-                    <div class="btn-animate"> <a class="btn-signin">Sign in</a> </div>
+                     <button type="submit"  class="btn-animate">Sign In</button>
                 </form>
                 
             </div>
