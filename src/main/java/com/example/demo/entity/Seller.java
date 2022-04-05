@@ -20,6 +20,7 @@ public class Seller {
 	private String address;
 	private String email;
     private String contact;
+    private String password;
     
     @OneToMany(targetEntity = Inventory.class , cascade = CascadeType.ALL)
 	@JoinColumn(name="seller_id_fk",referencedColumnName = "id")
@@ -28,6 +29,19 @@ public class Seller {
 	public Seller() {
 		super();
 	}
+	
+	public Seller(int id, String name, String address, String email, String contact, String password,
+			List<Inventory> auction_items) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.email = email;
+		this.contact = contact;
+		this.password = password;
+		this.auction_items = auction_items;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -57,6 +71,18 @@ public class Seller {
 	}
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public List<Inventory> getAuction_items() {
+		return auction_items;
+	}
+	public void setAuction_items(List<Inventory> auction_items) {
+		this.auction_items = auction_items;
 	}
     
     

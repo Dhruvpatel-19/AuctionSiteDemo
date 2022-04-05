@@ -26,7 +26,7 @@ import com.example.demo.repository.AuctionEventRepository;
 public class CatalogController {
 	
 	@Autowired
-	private AuctionEventRepository repo;
+	private AuctionEventRepository auctionRepo;
 	
 	public static final String uploadingdDirInventory = System.getProperty("user.dir") + "/src/main/webapp/catalogimage" ; 
 	public static final String uploadingdDirAuction = System.getProperty("user.dir") + "/src/main/webapp/auctionimage" ;
@@ -74,7 +74,7 @@ public class CatalogController {
 	        //inventoryRepo.save(inventory);
 		}
 		auctionEvent.setAuction_items(list);
-		repo.save(auctionEvent);
+		auctionRepo.save(auctionEvent);
 		return "Auction created successfully";
 		}
 		catch (Exception e) {

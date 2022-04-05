@@ -28,7 +28,7 @@ public class AuctionEvent {
 	private String email;
     private String contact;
     private String autionImage;
-    //private String descc;
+    private String descAuction;
     
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate startDate;
@@ -43,14 +43,33 @@ public class AuctionEvent {
 	private List<Inventory> auction_items;
 	
 	
+	public AuctionEvent() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
+	public AuctionEvent(int event_id, String eventName, String email, String contact, String autionImage,
+			String descAuction, LocalDate startDate, LocalTime startTime, LocalTime endTime,
+			List<Inventory> auction_items) {
+		super();
+		this.event_id = event_id;
+		this.eventName = eventName;
+		this.email = email;
+		this.contact = contact;
+		this.autionImage = autionImage;
+		this.descAuction = descAuction;
+		this.startDate = startDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.auction_items = auction_items;
+	}
+
 	public int getEvent_id() {
 		return event_id;
 	}
 	public void setEvent_id(int event_id) {
 		this.event_id = event_id;
 	}
-	
 	
 	public String getEmail() {
 		return email;
@@ -100,6 +119,14 @@ public class AuctionEvent {
 	}
 	public void setAutionImage(String autionImage) {
 		this.autionImage = autionImage;
+	}
+
+	public String getDescAuction() {
+		return descAuction;
+	}
+
+	public void setDescAuction(String descAuction) {
+		this.descAuction = descAuction;
 	}
 	
 	

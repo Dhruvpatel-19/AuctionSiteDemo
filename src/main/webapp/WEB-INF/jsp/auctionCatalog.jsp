@@ -29,7 +29,7 @@
                 <form method="POST" enctype="multipart/form-data" action="/auctionhouse/auction" id="auctionform" name="auctionform">
                      <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Event Name<span class="text-danger"> *</span></label> <input type="text" id="fname" name="eventName" placeholder="Enter event name" onblur="validate(1)"> </div>
-                       <!--<div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Event description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descc" placeholder="Enter the Description" onblur="validate(5)" > </div>  -->
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Event description:<span class="text-danger"> *</span></label> <input type="text" id="job" name="descAuction" placeholder="Enter the Description" onblur="validate(5)" > </div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="Enter Email" onblur="validate(3)"> </div>

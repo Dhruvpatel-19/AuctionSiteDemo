@@ -1,9 +1,14 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -19,6 +24,8 @@ public class Inventory {
      private String name;
      private String image;
      private boolean isSold = false;
+     
+   
      
 	public Inventory() {
 		super();
@@ -37,6 +44,10 @@ public class Inventory {
 		this.image = image;
 		this.isSold = isSold;
 	}
+
+	
+
+	
 
 
 	public int getInventory_id() {
@@ -104,6 +115,7 @@ public class Inventory {
 	public boolean isSold() {
 		return isSold;
 	}
+
 
 
 	public void setSold(boolean isSold) {
