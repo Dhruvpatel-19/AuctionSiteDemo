@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-
+    
     <title>Auction Page</title>
 <!--
 
@@ -26,7 +26,14 @@ https://templatemo.com/tm-548-training-studio
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
     <link rel="stylesheet" href="/css/templatemo-training-studio.css">
-
+    
+   <!--  <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+   <!--  <link href="/main.css" rel="stylesheet"> -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/app.js"></script>
+    
     </head>
     
     <body>
@@ -84,6 +91,7 @@ https://templatemo.com/tm-548-training-studio
                 <div class="main-button scroll-to-section">
                     <h6>${description}</h6>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -112,7 +120,20 @@ https://templatemo.com/tm-548-training-studio
                             <div class="right-content">
                                 <h4>${inventory.name}</h4>
                                 <p>${inventory.descInventory}</p>
-                                <a href="#" class="text-button">Bid</a>
+                               <%--  <a href="#" class="text-button"> Start Bid : ${inventory.start_bid}</a> --%>
+                               
+                                <%-- <input type="number" name ="bidValue" id = "bidValue" value="${inventory.start_bid}"> --%>
+                                <input type="number" id = "greetings" value="${inventory.start_bid}">
+                                
+                                
+                                <button id="send" class="btn btn-default" type="submit">Bid</button>
+                               <!--  <button id="send" class="btn btn-default" type="submit">Send</button> -->
+                                
+                              
+                                 <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    			 <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
+                    			 
+                    			
                             </div>
                         </li>
                     </ul>

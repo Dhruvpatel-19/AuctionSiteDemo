@@ -708,10 +708,18 @@ features
   display: inline-block;
   font-size: 13px;
   text-transform: uppercase;
-  color: #ed563b;
+  color: #ffff;
   font-weight: 500;
   
    margin-left : 25px;
+   
+  background-color: #ed563b ;
+  padding: 7px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+ /*  font-size: 16px; */
+   
 }
 
 /*
@@ -742,6 +750,7 @@ subscribe
   font-style: normal;
   color: #ed563b;
 }
+
 
 .cta-content p {
   font-size: 16px;

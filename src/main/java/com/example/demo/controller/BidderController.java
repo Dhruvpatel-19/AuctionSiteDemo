@@ -90,7 +90,7 @@ public class BidderController {
 		  { 
 			  System.out.println(password +" type: " +password.getClass().getSimpleName());
 			  System.out.println(bidder.getPassword() +" type: "+ bidder.getPassword().getClass().getSimpleName());
-			  return "bidderDashboard"; 
+			  return "redirect:/bidder/dashboard"; 
 		 }
 		 
 		 m.addAttribute("message", "Wrong Credentials! , try again");
@@ -114,7 +114,7 @@ public class BidderController {
 		model.addAttribute("auctionName", event.getEventName());
 		model.addAttribute("description" , event.getDescAuction());
 		model.addAttribute("items", event.getAuction_items());
-		return "eventView";
+		return "bidderEventView";
 	}
 	
 	
