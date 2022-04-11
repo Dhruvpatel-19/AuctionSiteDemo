@@ -126,12 +126,17 @@ https://templatemo.com/tm-548-training-studio
                                 <input type="number" id = "greetings" value="${inventory.start_bid}">
                                 
                                 
-                                <button id="send" class="btn btn-default" type="submit">Bid</button>
-                               <!--  <button id="send" class="btn btn-default" type="submit">Send</button> -->
+                              <!--  <button id="send" class="btn btn-default" type="submit">Bid</button> -->
+                              <button id="send + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="sendBid('${inventory.inventory_id}')">Bid</button>
+                                
                                 
                               
-                                 <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                    			 <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button>
+								 <button id="connect + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Connect</button>
+								 
+                    			 <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit" disabled="disabled" onclick="connect('${inventory.inventory_id}')">Disconnect</button>
+                    			 
+                    			 <!--  <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    			  <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button> -->
                     			 
                     			
                             </div>
