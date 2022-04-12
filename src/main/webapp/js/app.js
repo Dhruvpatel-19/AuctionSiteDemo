@@ -34,7 +34,7 @@ function connect(id) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/bid/newBid', function (newBid1) {
 	console.log("inside greeting");
-            newBid(JSON.parse(newBid1.body));
+            newBid(JSON.parse(newBid1.body),id);
         });
     });
 }
@@ -67,7 +67,7 @@ function sendBid() {
 
 function sendBid(id) {
     
-    stompClient.send("/app/addBid", {}, JSON.stringify({'oldBidValue': Number($("#greetings").val())}));
+    stompClient.send("/app/addBid", {}, JSON.stringify({'oldBidValue': Number($("#greetings"+id).val())}));
 
     
 }
@@ -75,10 +75,13 @@ function sendBid(id) {
 /*function showGreeting(message) {
     $("#greetings").append("<tr><td>" + message.message + "</td></tr>");
 }*/
-
 function newBid(bidValue) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
   document.getElementById("greetings").value = bidValue.newBidValue;
+}
+function newBid(bidValue,id) {
+  /*  $("#greetings").text(bidValue.newBidValue );*/
+  document.getElementById("greetings"+id).value = bidValue.newBidValue;
 }
 
 

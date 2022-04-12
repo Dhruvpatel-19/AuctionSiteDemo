@@ -123,7 +123,7 @@ https://templatemo.com/tm-548-training-studio
                                <%--  <a href="#" class="text-button"> Start Bid : ${inventory.start_bid}</a> --%>
                                
                                 <%-- <input type="number" name ="bidValue" id = "bidValue" value="${inventory.start_bid}"> --%>
-                                <input type="number" id = "greetings" value="${inventory.start_bid}">
+                                <input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.start_bid}">
                                 
                                 
                               <!--  <button id="send" class="btn btn-default" type="submit">Bid</button> -->
@@ -133,7 +133,7 @@ https://templatemo.com/tm-548-training-studio
                               
 								 <button id="connect + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Connect</button>
 								 
-                    			 <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit" disabled="disabled" onclick="connect('${inventory.inventory_id}')">Disconnect</button>
+                    			 <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="disconnect('${inventory.inventory_id}')">Disconnect</button>
                     			 
                     			 <!--  <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     			  <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button> -->
