@@ -94,8 +94,6 @@ function acceptBid(id) {
     
     stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id),'isSold' : true , 'soldPrice': Number($("#greetings"+id).val())}));
     
-   
-
 }
 
 
