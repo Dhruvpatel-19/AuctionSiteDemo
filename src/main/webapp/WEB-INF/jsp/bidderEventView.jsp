@@ -191,17 +191,12 @@ https://templatemo.com/tm-548-training-studio
     <script src="/js/jquery-2.1.0.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="/js/popper.js"></script>
+    <!-- <script src="/js/popper.js"></script> -->
     <script src="/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
     <script src="/js/scrollreveal.min.js"></script>
-    <script src="/js/waypoints.min.js"></script>
-    <script src="/js/jquery.counterup.min.js"></script>
-    <script src="/js/imgfix.min.js"></script> 
-    <script src="/js/mixitup.js"></script> 
-    <script src="/js/accordions.js"></script>
-    
+ 
     <!-- Global Init -->
     <script src="/js/custom.js"></script>
 
