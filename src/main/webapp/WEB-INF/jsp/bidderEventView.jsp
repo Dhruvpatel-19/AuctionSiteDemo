@@ -169,23 +169,6 @@ https://templatemo.com/tm-548-training-studio
    </section>
     <!-- ***** Call to Action End ***** -->
 
-    
-    
-    <!-- ***** Footer Start ***** -->
-    <!-- <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; 2020 Training Studio
-                    
-                    - Designed by <a rel="nofollow" href="https://templatemo.com" class="tm-text-link" target="_parent">TemplateMo</a></p>
-                    
-                 
-                    
-                </div>
-            </div>
-        </div>
-    </footer> -->
 
     <!-- jQuery -->
     <script src="/js/jquery-2.1.0.min.js"></script>
