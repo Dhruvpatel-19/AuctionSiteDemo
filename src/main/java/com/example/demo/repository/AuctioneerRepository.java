@@ -7,5 +7,12 @@ import com.example.demo.entity.Auctioneer;
 
 @Repository
 public interface AuctioneerRepository  extends JpaRepository<Auctioneer, Integer>{
+	
+	boolean existsByEmail(String email);
+	
+	Auctioneer findByEmail(String email);
+
+	
+	
 
 }

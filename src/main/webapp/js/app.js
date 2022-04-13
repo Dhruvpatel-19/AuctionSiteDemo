@@ -19,7 +19,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/bid/newBid', function (newBid1) {
-	console.log("inside greeting");
+			
             newBid(JSON.parse(newBid1.body));
         });
     });
@@ -33,11 +33,30 @@ function connect(id) {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/bid/newBid', function (newBid1) {
-	console.log("inside greeting");
+			//console.log("--------------------------");
+			//console.log("newBid value "+newBid1.body);
+			//console.log("--------------------------");
             newBid(JSON.parse(newBid1.body),id);
         });
+        
+        stompClient.subscribe('/bid/placebid', function () {
+            showBid();
+        });
+        
     });
 }
+
+
+function showBid(){
+	console.log("----------------Bidding Done--------------");
+	
+	if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log("Disconnected");
+}
+
 
 function disconnect() {
 	
@@ -69,8 +88,18 @@ function sendBid(id) {
     
     stompClient.send("/app/addBid", {}, JSON.stringify({'oldBidValue': Number($("#greetings"+id).val())}));
 
-    
 }
+
+function acceptBid(id) {
+    
+    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id),'isSold' : true , 'soldPrice': Number($("#greetings"+id).val())}));
+    
+   
+
+}
+
+
+
 
 /*function showGreeting(message) {
     $("#greetings").append("<tr><td>" + message.message + "</td></tr>");
@@ -79,6 +108,7 @@ function newBid(bidValue) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
   document.getElementById("greetings").value = bidValue.newBidValue;
 }
+
 function newBid(bidValue,id) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
   document.getElementById("greetings"+id).value = bidValue.newBidValue;

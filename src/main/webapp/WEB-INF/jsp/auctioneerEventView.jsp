@@ -121,17 +121,16 @@ https://templatemo.com/tm-548-training-studio
                                 <p>${inventory.descInventory}</p>
                                 
                                 <!-- <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Accept Bid</button> -->
-                                <button id="disconnect + ${inventory.name}" class="btn btn-default" type="submit" onclick="disconnect('${inventory.inventory_id}')">Accept Bid</button>
+                               
                                
                                 <input id="greetings${inventory.inventory_id}" value="${inventory.start_bid}">
                                 
                                 
                                  <!--  <button id="send" class="btn btn-default" type="submit">Start Bid</button> -->
                                  <!--  <button id="connect" class="btn btn-default" type="submit">Start Bid</button> -->
-                                  <button id="connect + ${inventory.name}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Start Bid</button>
+                                 <button id="connect + ${inventory.name}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Start Bid</button>
+                                  <button id="disconnect + ${inventory.name}" class="btn btn-default" type="submit" onclick="acceptBid('${inventory.inventory_id}')">Accept Bid</button>  
                                   
-                                  
-                                 
                                 
                             </div>
                         </li>

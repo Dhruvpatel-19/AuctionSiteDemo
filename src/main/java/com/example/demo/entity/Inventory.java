@@ -18,7 +18,7 @@ public class Inventory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int inventory_id;
      
-     private int lot_id;
+     private int soldPrice;
      private int start_bid;
      private String descInventory;
      private String name;
@@ -30,14 +30,15 @@ public class Inventory {
 	public Inventory() {
 		super();
 		// TODO Auto-generated constructor stub
-	}         
+	}
 
 
-	public Inventory(int inventory_id, int lot_id, int start_bid, String descInventory, String name, String image,
+
+	public Inventory(int inventory_id, int soldPrice, int start_bid, String descInventory, String name, String image,
 			boolean isSold) {
 		super();
 		this.inventory_id = inventory_id;
-		this.lot_id = lot_id;
+		this.soldPrice = soldPrice;
 		this.start_bid = start_bid;
 		this.descInventory = descInventory;
 		this.name = name;
@@ -45,9 +46,6 @@ public class Inventory {
 		this.isSold = isSold;
 	}
 
-	
-
-	
 
 
 	public int getInventory_id() {
@@ -55,19 +53,23 @@ public class Inventory {
 	}
 
 
+
 	public void setInventory_id(int inventory_id) {
 		this.inventory_id = inventory_id;
 	}
 
 
-	public int getLot_id() {
-		return lot_id;
+
+	public int getSoldPrice() {
+		return soldPrice;
 	}
 
 
-	public void setLot_id(int lot_id) {
-		this.lot_id = lot_id;
+
+	public void setSoldPrice(int soldPrice) {
+		this.soldPrice = soldPrice;
 	}
+
 
 
 	public int getStart_bid() {
@@ -75,16 +77,17 @@ public class Inventory {
 	}
 
 
+
 	public void setStart_bid(int start_bid) {
 		this.start_bid = start_bid;
 	}
 
 
-	
 
 	public String getDescInventory() {
 		return descInventory;
 	}
+
 
 
 	public void setDescInventory(String descInventory) {
@@ -92,9 +95,11 @@ public class Inventory {
 	}
 
 
+
 	public String getName() {
 		return name;
 	}
+
 
 
 	public void setName(String name) {
@@ -102,9 +107,11 @@ public class Inventory {
 	}
 
 
+
 	public String getImage() {
 		return image;
 	}
+
 
 
 	public void setImage(String image) {
@@ -112,15 +119,19 @@ public class Inventory {
 	}
 
 
-	public boolean isSold() {
+
+	public boolean getIsSold() {
 		return isSold;
 	}
 
 
 
-	public void setSold(boolean isSold) {
+	public void setIsSold(boolean isSold) {
 		this.isSold = isSold;
-	} 
+	}         
+
+
+	
 	
      
 }

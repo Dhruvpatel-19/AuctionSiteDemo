@@ -10,7 +10,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>Seller Sign In</title>  
+  <title>Auctioneer Sign In</title>  
   
 </head>
 <body>
@@ -19,12 +19,12 @@
         <div class="frame">
             <div class="nav">
                 <ul class="links">
-                    <li class="signin-active"><a class="btn">Sign In For Seller</a></li>
+                    <li class="signin-active"><a class="btn">Sign In For Auctioneer</a></li>
                 
                 </ul>
             </div>
             <div ng-app ng-init="checked = false">
-                <form class="form-signin" action="/seller/signIn" method="post" name="form"> 
+                <form class="form-signin" action="/auctioneer/signIn" method="post" name="form"> 
                   
                   	<c:if test="${message.length()>0}">
 						<p class="message">${message}</p>
@@ -40,7 +40,7 @@
                 
             </div>
             <br>
-            <div class="SignUp"> <a href="/seller/signUp">Don't Have A Account?Sign Up</a> </div>
+            <div class="SignUp"> <a href="/auctioneer/signUp">Don't Have A Account?Sign Up</a> </div>
             
             
         </div> <a id="refresh" value="Refresh" onClick="history.go()"> <svg class="refreshicon" version="1.1" id="Capa_1" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 322.447 322.447" style="enable-background:new 0 0 322.447 322.447;" xml:space="preserve">

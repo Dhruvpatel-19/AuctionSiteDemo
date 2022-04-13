@@ -11,4 +11,5 @@ import com.example.demo.entity.Inventory;
 public interface InventoryRepository extends JpaRepository<Inventory, Integer>{
 
 
+
 }
