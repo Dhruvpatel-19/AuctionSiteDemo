@@ -2,23 +2,27 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Bidder;
-import com.example.demo.entity.Inventory;
+
 import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.BidderRepository;
-import com.example.demo.repository.InventoryRepository;
+
 
 @Controller
 public class BidderController {
@@ -76,7 +80,7 @@ public class BidderController {
 	
 	
 	@RequestMapping(value = "/bidder/signIn" , method = RequestMethod.POST)
-	public String bidderSignInPost(@RequestParam("email") String email , @RequestParam("password")String password ,  Model m) {
+	public String bidderSignInPost( HttpServletResponse response , @RequestParam("email") String email , @RequestParam("password")String password ,  Model m ) {
 		
 		  
 		  if(!bidderRepo.existsByEmail(email)) {
@@ -90,6 +94,11 @@ public class BidderController {
 		  { 
 			  System.out.println(password +" type: " +password.getClass().getSimpleName());
 			  System.out.println(bidder.getPassword() +" type: "+ bidder.getPassword().getClass().getSimpleName());
+			  
+			  Cookie c=new Cookie("bidder", email);
+			  c.setPath("/");
+			  response.addCookie(c);
+			  
 			  return "redirect:/bidder/dashboard"; 
 		 }
 		 
@@ -108,12 +117,32 @@ public class BidderController {
 	}
 	
 	@RequestMapping( value = "/bidder/event/{event_id}" , method = RequestMethod.GET)
-	public String eventView(@PathVariable("event_id")int event_id , Model model) {
+	public String eventView(HttpServletRequest request , @PathVariable("event_id")int event_id , Model model) {
 		
 		AuctionEvent event = auctionRepo.findById(event_id).orElse(null);
 		model.addAttribute("auctionName", event.getEventName());
 		model.addAttribute("description" , event.getDescAuction());
 		model.addAttribute("items", event.getAuction_items());
+		
+		System.out.println("----------------------------");
+		String cookieinemail = null;
+        Cookie[]  c1=request.getCookies();
+        for (Cookie c: c1)
+        {
+        	System.out.println("Name :"+c.getName()+" Email :"+c.getValue());
+        	
+            if(c.getName().equals("bidder"))
+            {
+                cookieinemail=c.getValue();
+                System.out.println("Bidder : "+cookieinemail);
+            }
+        }
+        System.out.println("------------------------------");
+		
+        Bidder b = bidderRepo.findByEmail(cookieinemail);
+        int bidderId = b.getId();
+        System.out.println("Bidder ID is : "+bidderId);
+        model.addAttribute("bidderId", bidderId);
 		return "bidderEventView";
 	}
 	

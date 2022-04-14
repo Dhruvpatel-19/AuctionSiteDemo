@@ -84,15 +84,15 @@ function sendBid() {
     
 }
 
-function sendBid(id) {
-    
+function sendBid(bidderId,id) {
+	
     stompClient.send("/app/addBid", {}, JSON.stringify({'oldBidValue': Number($("#greetings"+id).val())}));
 
 }
 
 function acceptBid(id) {
     
-    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id),'isSold' : true , 'soldPrice': Number($("#greetings"+id).val())}));
+    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id),'isSold' : true , 'soldPrice': Number($("#greetings"+id).val())  }));
     
 }
 
@@ -104,11 +104,13 @@ function acceptBid(id) {
 }*/
 function newBid(bidValue) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
+
   document.getElementById("greetings").value = bidValue.newBidValue;
 }
 
 function newBid(bidValue,id) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
+  
   document.getElementById("greetings"+id).value = bidValue.newBidValue;
 }
 
