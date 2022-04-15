@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ public class Bidder {
     
     @OneToMany(targetEntity = Inventory.class , cascade = CascadeType.ALL)
 	@JoinColumn(name="bidder_id_fk",referencedColumnName = "id")
-	private List<Inventory> auction_items;
+	private List<Inventory> auction_items = new ArrayList<>();
     
     
 	public Bidder() {
@@ -75,6 +76,7 @@ public class Bidder {
 	public List<Inventory> getAuction_items() {
 		return auction_items;
 	}
+	
 	public void setAuction_items(List<Inventory> auction_items) {
 		this.auction_items = auction_items;
 	}

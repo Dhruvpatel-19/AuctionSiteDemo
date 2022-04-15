@@ -1,16 +1,18 @@
 package com.example.demo.entity;
 
 public class oldBid {
-
+	
+	private int bidderId;
 	private int oldBidValue;
 
 	public oldBid() {
+	
 	}
 	
-	
-	public oldBid(int oldBidValue) {
+
+	public oldBid(int bidderId, int oldBidValue) {
 		super();
-		
+		this.bidderId = bidderId;
 		this.oldBidValue = oldBidValue;
 	}
 
@@ -24,7 +26,14 @@ public class oldBid {
 	}
 
 
-	
+	public int getBidderId() {
+		return bidderId;
+	}
+
+
+	public void setBidderId(int bidderId) {
+		this.bidderId = bidderId;
+	}
 
 	
 }

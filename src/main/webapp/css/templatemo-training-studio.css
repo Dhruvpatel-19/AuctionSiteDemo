@@ -175,6 +175,9 @@ body {
 header
 --------------------------------------------- 
 */
+.bidderId{
+	visibility: hidden;
+}
 
 .background-header {
   background: rgba(250,250,250,0.99) !important;

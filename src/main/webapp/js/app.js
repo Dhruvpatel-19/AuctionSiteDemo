@@ -85,14 +85,14 @@ function sendBid() {
 }
 
 function sendBid(bidderId,id) {
-	
-    stompClient.send("/app/addBid", {}, JSON.stringify({'oldBidValue': Number($("#greetings"+id).val())}));
+	console.log("bidderId : "+bidderId);
+    stompClient.send("/app/addBid", {}, JSON.stringify({'bidderId' : Number(bidderId) ,'oldBidValue': Number($("#greetings"+id).val())}));
 
 }
 
 function acceptBid(id) {
     
-    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id),'isSold' : true , 'soldPrice': Number($("#greetings"+id).val())  }));
+    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id) , 'soldPrice': Number($("#greetings"+id).val()) , 'bidderId':Number($("#highBid"+id).val()) }));
     
 }
 
@@ -104,13 +104,12 @@ function acceptBid(id) {
 }*/
 function newBid(bidValue) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
-
   document.getElementById("greetings").value = bidValue.newBidValue;
 }
 
 function newBid(bidValue,id) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
-  
+  document.getElementById("highBid"+id).value = bidValue.bidderId;
   document.getElementById("greetings"+id).value = bidValue.newBidValue;
 }
 

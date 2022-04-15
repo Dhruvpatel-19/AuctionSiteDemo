@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Inventory;
 import com.example.demo.repository.AuctionEventRepository;
+import com.example.demo.repository.BidderRepository;
 
 
 
@@ -27,6 +29,9 @@ public class CatalogController {
 	
 	@Autowired
 	private AuctionEventRepository auctionRepo;
+	
+	@Autowired
+	private BidderRepository bidderRepo;
 	
 	public static final String uploadingdDirInventory = System.getProperty("user.dir") + "/src/main/webapp/catalogimage" ; 
 	public static final String uploadingdDirAuction = System.getProperty("user.dir") + "/src/main/webapp/auctionimage" ;
@@ -83,6 +88,13 @@ public class CatalogController {
 			return "failure";
 			
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/bidder/{id}/items" , method = RequestMethod.GET )
+	public List<Inventory> getAllAuctionItems(@PathVariable("id") int id) {
+		System.out.println("List Type " +bidderRepo.findAuctionItemsByBidder(id).getClass());
+		return bidderRepo.findAuctionItemsByBidder(id);
 	}
 	
 	

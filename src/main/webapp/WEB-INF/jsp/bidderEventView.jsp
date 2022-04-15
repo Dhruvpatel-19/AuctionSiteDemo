@@ -121,22 +121,20 @@ https://templatemo.com/tm-548-training-studio
                                 <h4>${inventory.name}</h4>
                                 <p>${inventory.descInventory}</p>
                    
-                                Current Bid :
-                                <input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.start_bid}">
+                              Current Bid :
+                              <input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.start_bid}">
                                 
                                 
-                              <!--  <button id="send" class="btn btn-default" type="submit">Bid</button> -->
-                              <button id="send + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="sendBid('${bidderId}' , '${inventory.inventory_id}')">Bid</button>
+                              <button id="send + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="sendBid('${bidderId}','${inventory.inventory_id}')">Bid</button>
                                 
                                 
                               
-								 <button id="connect + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Connect</button>
+						      <button id="connect + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Connect</button>
 								 
-                    			 <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="disconnect('${inventory.inventory_id}')">Disconnect</button>
-                    			 
-                    			 <!--  <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                    			  <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect</button> -->
-                    			 
+                    		  <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="disconnect('${inventory.inventory_id}')">Disconnect</button>
+                    		  <br>
+                    		  Highest Bidder Id :
+                              <input id = "highBid${inventory.inventory_id}" value="None">		 
                   
                             </div>
                         </li>
