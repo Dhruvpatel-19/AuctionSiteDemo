@@ -86,7 +86,7 @@ https://templatemo.com/tm-548-training-studio
 
         <div class="video-overlay header-text">
             <div class="caption">
-            	<h2 class="bidderId">${bidderId}</h2>
+            	
                 <h2>${auctionName}</h2>
                 <div class="main-button scroll-to-section">
                     <h6>${description}</h6>
@@ -117,25 +117,45 @@ https://templatemo.com/tm-548-training-studio
                             <div class="left-icon">
                                 <img src="/catalogimage/${inventory.image}" alt="First One">
                             </div>
+                            
+                            
+                            
+                            
                             <div class="right-content">
                                 <h4>${inventory.name}</h4>
                                 <p>${inventory.descInventory}</p>
-                   
-                              Current Bid :
-                              <input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.start_bid}">
-                                
-                                
-                              <button id="send + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="sendBid('${bidderId}','${inventory.inventory_id}')">Bid</button>
-                                
-                                
-                              
-						      <button id="connect + ${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Connect</button>
-								 
-                    		  <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="disconnect('${inventory.inventory_id}')">Disconnect</button>
-                    		  <br>
-                    		  Highest Bidder Id :
-                              <input id = "highBid${inventory.inventory_id}" value="None">		 
-                  
+                            
+                           <%--  <c:if test="${inventory.isSold}">
+                            	<p id="isSold">This Item Is Sold for ${inventory.soldPrice}<p>
+                            </c:if> --%>
+                            
+                              <c:choose>
+    								<c:when test="${inventory.isSold}">
+    									<p id="isSold">This Item Is Sold for ${inventory.soldPrice}<p>
+    								 	<p>Sold for :</p>
+                              			<input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.soldPrice}">
+                              			
+                              			<button disabled="disabled" id="send${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="sendBid('${bidderId}' , '${bidderName}' ,'${inventory.inventory_id}')">Bid</button>
+						      			<button disabled="disabled" id="connect${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Start Bid</button>
+						      		</c:when>  
+						      		
+    								<c:otherwise>
+    									<p>Current Bid :</p>
+                              			<input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.start_bid}">
+						      			
+						      			<button id="send${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="sendBid('${bidderId}' , '${bidderName}' ,'${inventory.inventory_id}')">Bid</button>
+						      			<button id="connect${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Start Bid</button>
+						      			
+						      			<br>
+                              			<p>Highest Bidder Id :</p>
+                              			<input id = "highBidId${inventory.inventory_id}" value="None">
+                              			<p>Highest Bidder:</p>
+                             			<input id = "highBidName${inventory.inventory_id}" value="None">	
+						    		</c:otherwise>
+							</c:choose>
+                    		  
+                    		  <%-- <button id="disconnect + ${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="disconnect('${inventory.inventory_id}')">Disconnect</button> --%> 
+                
                             </div>
                         </li>
                     </ul>

@@ -140,9 +140,9 @@ public class BidderController {
         System.out.println("------------------------------");
 		
         Bidder b = bidderRepo.findByEmail(cookieinemail);
-        int bidderId = b.getId();
-        System.out.println("Bidder ID is : "+bidderId);
-        model.addAttribute("bidderId", bidderId);
+      
+        model.addAttribute("bidderId", b.getId());
+        model.addAttribute("bidderName", b.getName());
 		return "bidderEventView";
 	}
 	

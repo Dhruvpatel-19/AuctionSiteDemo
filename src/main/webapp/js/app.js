@@ -1,5 +1,6 @@
 var stompClient = null;
 
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -11,6 +12,7 @@ function setConnected(connected) {
     }
   
 }
+
 
 function connect() {
     var socket = new SockJS('/bidwebsocket');
@@ -84,15 +86,19 @@ function sendBid() {
     
 }
 
-function sendBid(bidderId,id) {
+function sendBid(bidderId,bidderName,id) {
 	console.log("bidderId : "+bidderId);
-    stompClient.send("/app/addBid", {}, JSON.stringify({'bidderId' : Number(bidderId) ,'oldBidValue': Number($("#greetings"+id).val())}));
+		console.log("Button disable code ");
+	
+	//$("#send"+id).prop('disabled', true);
+	
+    stompClient.send("/app/addBid", {}, JSON.stringify({'bidderId' : Number(bidderId), 'bidderName': bidderName ,'oldBidValue': Number($("#greetings"+id).val())}));
 
 }
 
 function acceptBid(id) {
     
-    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id) , 'soldPrice': Number($("#greetings"+id).val()) , 'bidderId':Number($("#highBid"+id).val()) }));
+    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id) , 'soldPrice': Number($("#greetings"+id).val()) , 'bidderId':Number($("#highBidId"+id).val()) }));
     
 }
 
@@ -109,8 +115,10 @@ function newBid(bidValue) {
 
 function newBid(bidValue,id) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
-  document.getElementById("highBid"+id).value = bidValue.bidderId;
+  console.log("Inside newBid id : "+id);
   document.getElementById("greetings"+id).value = bidValue.newBidValue;
+  document.getElementById("highBidId"+id).value = bidValue.bidderId;
+  document.getElementById("highBidName"+id).value = bidValue.bidderName;
 }
 
 
@@ -122,4 +130,9 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendBid(); });
+    
+    /*$("#connect1").click( function(){
+	$("#normalButton").prop('disabled', true);
+	$("#normalButton").prop('disabled', false);
+	});*/
 });

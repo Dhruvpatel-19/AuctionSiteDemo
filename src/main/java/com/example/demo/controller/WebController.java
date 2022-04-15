@@ -31,7 +31,7 @@ public class WebController {
 	public newBid increaseBib(oldBid oldbid1)throws InterruptedException
 	{
 		
-		return new newBid(oldbid1.getBidderId() , oldbid1.getOldBidValue());
+		return new newBid(oldbid1.getBidderId(), oldbid1.getBidderName() , oldbid1.getOldBidValue());
 				
 	
 	}

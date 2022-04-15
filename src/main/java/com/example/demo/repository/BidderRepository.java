@@ -17,4 +17,6 @@ public interface BidderRepository extends JpaRepository<Bidder, Integer>{
 	
 	@Query("SELECT auction_items FROM Bidder b WHERE b.id = ?1")
 	public List<Inventory> findAuctionItemsByBidder(int id);
+
+
 }

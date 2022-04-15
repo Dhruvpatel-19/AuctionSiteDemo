@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entity.AuctionEvent;
+import com.example.demo.entity.Bidder;
 import com.example.demo.entity.Inventory;
 import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.BidderRepository;
@@ -96,8 +97,6 @@ public class CatalogController {
 		System.out.println("List Type " +bidderRepo.findAuctionItemsByBidder(id).getClass());
 		return bidderRepo.findAuctionItemsByBidder(id);
 	}
-	
-	
 	
 	
 }
