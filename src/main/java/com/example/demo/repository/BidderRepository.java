@@ -15,8 +15,10 @@ public interface BidderRepository extends JpaRepository<Bidder, Integer>{
 
 	public boolean existsByEmail(String email);
 	
-	@Query("SELECT auction_items FROM Bidder b WHERE b.id = ?1")
+	@Query("SELECT auctionItems FROM Bidder b WHERE b.id = ?1")
 	public List<Inventory> findAuctionItemsByBidder(int id);
-
+	
+	public Bidder findByAuctionItems_InventoryId(int id);
+	
 
 }

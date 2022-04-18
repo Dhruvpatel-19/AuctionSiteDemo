@@ -1,25 +1,45 @@
 package com.example.demo.entity;
 
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class SoldItem {
-	private int inventory_id;
-	private int bidderId;
+	
+	@Id
+	private int inventoryId;
 	private int soldPrice;
+	private int bidderId;
+	private String bidderName;
+	
 	public SoldItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SoldItem(int inventory_id, int bidderId, int soldPrice) {
+	
+
+	public SoldItem(int inventoryId, int soldPrice, int bidderId, String bidderName) {
 		super();
-		this.inventory_id = inventory_id;
-		this.bidderId = bidderId;
+		this.inventoryId = inventoryId;
 		this.soldPrice = soldPrice;
+		this.bidderId = bidderId;
+		this.bidderName = bidderName;
 	}
-	public int getInventory_id() {
-		return inventory_id;
+
+
+
+	public int getInventoryId() {
+		return inventoryId;
 	}
-	public void setInventory_id(int inventory_id) {
-		this.inventory_id = inventory_id;
+
+
+	public void setInventoryId(int inventoryId) {
+		this.inventoryId = inventoryId;
 	}
+
+
 	public int getBidderId() {
 		return bidderId;
 	}
@@ -32,7 +52,17 @@ public class SoldItem {
 	public void setSoldPrice(int soldPrice) {
 		this.soldPrice = soldPrice;
 	}
+
+
+	public String getBidderName() {
+		return bidderName;
+	}
+
+
+	public void setBidderName(String bidderName) {
+		this.bidderName = bidderName;
+	}
+
 	
-	
-	
+		
 }

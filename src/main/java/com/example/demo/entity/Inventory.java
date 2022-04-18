@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -16,7 +18,7 @@ public class Inventory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int inventory_id;
+	private int inventoryId; //inventory_id
      
      private int soldPrice;
      private int start_bid;
@@ -25,19 +27,17 @@ public class Inventory {
      private String image;
      private boolean isSold = false;
      
-   
-     
+
 	public Inventory() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-
-	public Inventory(int inventory_id, int soldPrice, int start_bid, String descInventory, String name, String image,
+	public Inventory(int inventoryId, int soldPrice, int start_bid, String descInventory, String name, String image,
 			boolean isSold) {
 		super();
-		this.inventory_id = inventory_id;
+		this.inventoryId = inventoryId;
 		this.soldPrice = soldPrice;
 		this.start_bid = start_bid;
 		this.descInventory = descInventory;
@@ -45,19 +45,17 @@ public class Inventory {
 		this.image = image;
 		this.isSold = isSold;
 	}
+	
 
 
-
-	public int getInventory_id() {
-		return inventory_id;
+	public int getInventoryId() {
+		return inventoryId;
 	}
 
 
-
-	public void setInventory_id(int inventory_id) {
-		this.inventory_id = inventory_id;
+	public void setInventoryId(int inventoryId) {
+		this.inventoryId = inventoryId;
 	}
-
 
 
 	public int getSoldPrice() {

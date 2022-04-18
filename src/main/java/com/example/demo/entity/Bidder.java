@@ -24,7 +24,7 @@ public class Bidder {
     
     @OneToMany(targetEntity = Inventory.class , cascade = CascadeType.ALL)
 	@JoinColumn(name="bidder_id_fk",referencedColumnName = "id")
-	private List<Inventory> auction_items = new ArrayList<>();
+	private List<Inventory> auctionItems = new ArrayList<>();
     
     
 	public Bidder() {
@@ -32,15 +32,19 @@ public class Bidder {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Bidder(int id, String name, String password, String email, String contact, List<Inventory> auction_items) {
+	
+
+	public Bidder(int id, String name, String password, String email, String contact, List<Inventory> auctionItems) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.email = email;
 		this.contact = contact;
-		this.auction_items = auction_items;
+		this.auctionItems = auctionItems;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -72,14 +76,18 @@ public class Bidder {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
+
+
+	public List<Inventory> getAuctionItems() {
+		return auctionItems;
+	}
+
+
+	public void setAuctionItems(List<Inventory> auctionItems) {
+		this.auctionItems = auctionItems;
+	}
     
-	public List<Inventory> getAuction_items() {
-		return auction_items;
-	}
 	
-	public void setAuction_items(List<Inventory> auction_items) {
-		this.auction_items = auction_items;
-	}
 
 
 }

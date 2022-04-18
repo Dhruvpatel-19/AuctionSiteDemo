@@ -16,6 +16,7 @@ import com.example.demo.entity.newBid;
 import com.example.demo.entity.oldBid;
 import com.example.demo.repository.BidderRepository;
 import com.example.demo.repository.InventoryRepository;
+import com.example.demo.repository.SoldItemRepository;
 
 @Controller
 public class WebController {
@@ -26,13 +27,15 @@ public class WebController {
 	@Autowired
 	private BidderRepository bidderRepo;
 	
+	@Autowired
+	private SoldItemRepository soldItemRepo;
+	
 	@MessageMapping("/addBid")
 	@SendTo("/bid/newBid")
 	public newBid increaseBib(oldBid oldbid1)throws InterruptedException
 	{
 		
-		return new newBid(oldbid1.getBidderId(), oldbid1.getBidderName() , oldbid1.getOldBidValue());
-				
+		return new newBid(oldbid1.getBidderId(), oldbid1.getBidderName() , oldbid1.getOldBidValue());			
 	
 	}
 	
@@ -40,7 +43,7 @@ public class WebController {
 	@SendTo("/bid/placebid") 
 	public Inventory completedBid(Inventory inventory) {
 		
-		Inventory inv = inventoryRepo.findById(inventory.getInventory_id()).orElse(null);
+		Inventory inv = inventoryRepo.findById(inventory.getinventoryId()).orElse(null);
 		inv.setSoldPrice(inventory.getSoldPrice());
 		inv.setIsSold(inventory.getIsSold());
 		inventoryRepo.save(inv);
@@ -52,14 +55,16 @@ public class WebController {
 	@SendTo("/bid/placebid") 
 	public SoldItem completedBid(SoldItem soldItem) {
 		
-		/*Inventory inv = inventoryRepo.findById(inventory.getInventory_id()).orElse(null);
+		/*Inventory inv = inventoryRepo.findById(inventory.getinventoryId()).orElse(null);
 		inv.setSoldPrice(inventory.getSoldPrice());
 		inv.setIsSold(inventory.getIsSold());
 		inventoryRepo.save(inv);
 		*/
+		
+		
 		Bidder b = bidderRepo.findById(soldItem.getBidderId()).orElse(null);
 		
-		Inventory inv = inventoryRepo.findById(soldItem.getInventory_id()).orElse(null);
+		Inventory inv = inventoryRepo.findById(soldItem.getInventoryId()).orElse(null);
 		inv.setSoldPrice(soldItem.getSoldPrice());
 		inv.setIsSold(true);
 		
@@ -77,12 +82,12 @@ public class WebController {
 		System.out.println("-------------------------------------------------------------");
 		*/
 	
-		b.setAuction_items(listInventory);
+		b.setAuctionItems(listInventory);
 		
 		bidderRepo.save(b);
 		
 		
-		return soldItem;
+		return soldItemRepo.save(soldItem);
 	}
 
 }

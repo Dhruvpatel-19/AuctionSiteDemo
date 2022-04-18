@@ -12,7 +12,5 @@ public interface AuctioneerRepository  extends JpaRepository<Auctioneer, Integer
 	
 	Auctioneer findByEmail(String email);
 
-	
-	
 
 }

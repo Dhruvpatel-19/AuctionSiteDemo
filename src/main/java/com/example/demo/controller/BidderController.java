@@ -19,9 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Bidder;
-
+import com.example.demo.entity.SoldItem;
 import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.BidderRepository;
+import com.example.demo.repository.SoldItemRepository;
 
 
 @Controller
@@ -31,6 +32,9 @@ public class BidderController {
 	
 	@Autowired
 	private AuctionEventRepository auctionRepo;
+	
+	@Autowired
+	private SoldItemRepository soldItemRepo;
 	
 	
 	
@@ -140,9 +144,15 @@ public class BidderController {
         System.out.println("------------------------------");
 		
         Bidder b = bidderRepo.findByEmail(cookieinemail);
-      
         model.addAttribute("bidderId", b.getId());
         model.addAttribute("bidderName", b.getName());
+        
+        
+        List<SoldItem> soldItems = soldItemRepo.findAll();
+        model.addAttribute( "soldItem",soldItems);
+        model.addAttribute("soldItemsSize" , soldItems.size());
+        
+        
 		return "bidderEventView";
 	}
 	

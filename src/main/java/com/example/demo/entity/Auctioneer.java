@@ -26,23 +26,27 @@ public class Auctioneer {
     
 	@OneToMany(targetEntity = AuctionEvent.class , cascade = CascadeType.ALL)
 	@JoinColumn(name="auctioneer_id_fk",referencedColumnName = "id")
-	private List<AuctionEvent> auction_event;
+	private List<AuctionEvent> auctionEvent;
 
 	public Auctioneer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public Auctioneer(int id, String name, String password, String email, String contact,
-			List<AuctionEvent> auction_event) {
+			List<AuctionEvent> auctionEvent) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
 		this.email = email;
 		this.contact = contact;
-		this.auction_event = auction_event;
+		this.auctionEvent = auctionEvent;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -84,14 +88,14 @@ public class Auctioneer {
 		this.contact = contact;
 	}
 
-	public List<AuctionEvent> getAuction_event() {
-		return auction_event;
+	public List<AuctionEvent> getAuctionEvent() {
+		return auctionEvent;
 	}
 
-	public void setAuction_event(List<AuctionEvent> auction_event) {
-		this.auction_event = auction_event;
+	public void setAuctionEvent(List<AuctionEvent> auctionEvent) {
+		this.auctionEvent = auctionEvent;
 	}
-     
+ 
     
 
 }

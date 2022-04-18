@@ -92,10 +92,18 @@ public class CatalogController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value ="/bidder/{id}/items" , method = RequestMethod.GET )
+	//@RequestMapping(value ="/bidder/{id}/items" , method = RequestMethod.GET )
+	@RequestMapping(value ="/invenotoryByBidderId/{id}" , method = RequestMethod.GET )
 	public List<Inventory> getAllAuctionItems(@PathVariable("id") int id) {
 		System.out.println("List Type " +bidderRepo.findAuctionItemsByBidder(id).getClass());
 		return bidderRepo.findAuctionItemsByBidder(id);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/bidderByInventoryId/{id}" , method = RequestMethod.GET )
+	public Bidder getBidderByAuctionItems(@PathVariable("id") int id) {
+		
+		return bidderRepo.findByAuctionItems_InventoryId(id);
 	}
 	
 	

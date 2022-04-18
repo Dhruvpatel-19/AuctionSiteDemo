@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Auctioneer;
+import com.example.demo.entity.SoldItem;
 import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.AuctioneerRepository;
+import com.example.demo.repository.SoldItemRepository;
 
 @Controller
 public class AuctioneerController {
@@ -29,6 +31,9 @@ public class AuctioneerController {
 	
 	@Autowired
 	private AuctioneerRepository auctioneerRepo;
+	
+	@Autowired
+	private SoldItemRepository soldItemRepo;
 	
 	@RequestMapping(value = "/auctioneer/signUp" , method = RequestMethod.GET )
 	public String auctioneerSignUp() {
@@ -82,8 +87,8 @@ public class AuctioneerController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/app/bidCompleted" )
-	public String bidCompleted(@RequestParam("inventory_id") int inventory_id , @RequestParam("userID")int uid , @RequestParam("soldPrice")int price) {
-		System.out.println("inventory_id:"+inventory_id+" userID"+uid+" soldPrice"+price);
+	public String bidCompleted(@RequestParam("inventoryId") int inventoryId , @RequestParam("userID")int uid , @RequestParam("soldPrice")int price) {
+		System.out.println("inventoryId:"+inventoryId+" userID"+uid+" soldPrice"+price);
 		return "done";
 	}
 	
@@ -118,7 +123,12 @@ public class AuctioneerController {
 		model.addAttribute("auctionName", event.getEventName());
 		model.addAttribute("description" , event.getDescAuction());
 		model.addAttribute("items", event.getAuction_items());
-		return "auctioneerEventView";
+		
+		 List<SoldItem> soldItems = soldItemRepo.findAll();
+	     model.addAttribute( "soldItem",soldItems);
+	     model.addAttribute("soldItemsSize" , soldItems.size());
+		
+	     return "auctioneerEventView";
 	}
 
 }

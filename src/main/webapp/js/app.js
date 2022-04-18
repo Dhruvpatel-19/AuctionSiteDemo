@@ -1,6 +1,7 @@
 var stompClient = null;
 
 
+
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -34,6 +35,9 @@ function connect(id) {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
+        
+      
+        
         stompClient.subscribe('/bid/newBid', function (newBid1) {
 			//console.log("--------------------------");
 			//console.log("newBid value "+newBid1.body);
@@ -57,6 +61,9 @@ function showBid(){
     }
     setConnected(false);
     console.log("Disconnected");
+    
+    //reload page
+    location.reload();
 }
 
 
@@ -88,17 +95,15 @@ function sendBid() {
 
 function sendBid(bidderId,bidderName,id) {
 	console.log("bidderId : "+bidderId);
-		console.log("Button disable code ");
-	
+	console.log("Button disable code ");
 	//$("#send"+id).prop('disabled', true);
-	
     stompClient.send("/app/addBid", {}, JSON.stringify({'bidderId' : Number(bidderId), 'bidderName': bidderName ,'oldBidValue': Number($("#greetings"+id).val())}));
-
 }
 
 function acceptBid(id) {
     
-    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventory_id' : Number(id) , 'soldPrice': Number($("#greetings"+id).val()) , 'bidderId':Number($("#highBidId"+id).val()) }));
+    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventoryId' : Number(id) , 'soldPrice': Number($("#greetings"+id).val()) , 'bidderId':Number($("#highBidId"+id).val()) , 'bidderName':Number($("#highBidName"+id).val())}));
+    
     
 }
 
@@ -115,11 +120,15 @@ function newBid(bidValue) {
 
 function newBid(bidValue,id) {
   /*  $("#greetings").text(bidValue.newBidValue );*/
+  
   console.log("Inside newBid id : "+id);
   document.getElementById("greetings"+id).value = bidValue.newBidValue;
   document.getElementById("highBidId"+id).value = bidValue.bidderId;
   document.getElementById("highBidName"+id).value = bidValue.bidderName;
+  
 }
+
+
 
 
 $(function () {

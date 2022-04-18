@@ -132,24 +132,30 @@ https://templatemo.com/tm-548-training-studio
     									<c:when test="${inventory.isSold}">
     										<p id="isSold">This Item Is Sold for ${inventory.soldPrice}<p>
     										<p>Sold for :</p>
-                             				<input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.soldPrice}">
+                             				<input type="number" id = "greetings${inventory.inventoryId}" value="${inventory.soldPrice}">
     										
-    										<button disabled="disabled" id="connect${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Start Bid</button> 
-                    		  				<button disabled="disabled" id="disconnect${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="acceptBid('${inventory.inventory_id}')">Accept Bid</button>	 					
+    										<button disabled="disabled" id="connect${inventory.inventoryId}" class="btn btn-default">Start Bid</button> 
+                    		  				<button disabled="disabled" id="disconnect${inventory.inventoryId}" class="btn btn-default">Accept Bid</button>
+                    		  				
+                    		  				<br>
+                              				<p>Winner Bidder Id :</p>
+                              				<input id = "highBidId${inventory.inventoryId}" value="${soldItem.get(inventory.inventoryId - 1).bidderId}">
+                              				<p>Winner Bidder:</p>
+                             				<input id = "highBidName${inventory.inventoryId}" value="${soldItem.get(inventory.inventoryId - 1).bidderName}">		 					
     									</c:when>
     									    
     									<c:otherwise>
     										<p>Current Bid :</p>
-                              				<input type="number" id = "greetings${inventory.inventory_id}" value="${inventory.start_bid}">
+                              				<input type="number" id = "greetings${inventory.inventoryId}" value="${inventory.start_bid}">
         									
-        									<button id="connect${inventory.inventory_id}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventory_id}')">Start Bid</button> 
-                    		 				<button id="disconnect${inventory.inventory_id}" class="btn btn-default" type="submit"  onclick="acceptBid('${inventory.inventory_id}')">Accept Bid</button>
+        									<button id="connect${inventory.inventoryId}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventoryId}')">Start Bid</button> 
+                    		 				<button id="disconnect${inventory.inventoryId}" class="btn btn-default" type="submit"  onclick="acceptBid('${inventory.inventoryId}')">Accept Bid</button>
                     		 				
                     		 				<br>
                               				<p>Highest Bidder Id :</p>
-                              				<input id = "highBidId${inventory.inventory_id}" value="None">
+                              				<input id = "highBidId${inventory.inventoryId}" value="None">
                               				<p>Highest Bidder:</p>
-                              				<input id = "highBidName${inventory.inventory_id}" value="None">	
+                              				<input id = "highBidName${inventory.inventoryId}" value="None">	
    										</c:otherwise>
    										
 								</c:choose>
