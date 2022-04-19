@@ -149,9 +149,7 @@ public class BidderController {
         
         
         List<SoldItem> soldItems = soldItemRepo.findAll();
-        model.addAttribute( "soldItem",soldItems);
-        model.addAttribute("soldItemsSize" , soldItems.size());
-        
+        model.addAttribute( "soldItem",soldItems);    
         
 		return "bidderEventView";
 	}

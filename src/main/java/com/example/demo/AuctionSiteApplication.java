@@ -18,6 +18,7 @@ public class AuctionSiteApplication {
 		System.out.println("App Started...");
 		System.out.println("DirAuction = "+ CatalogController.uploadingdDirAuction);
 		System.out.println("DirInventory = "+ CatalogController.uploadingdDirInventory);
+		
 	}
 
 }

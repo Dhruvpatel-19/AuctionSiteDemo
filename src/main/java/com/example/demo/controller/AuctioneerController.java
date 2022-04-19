@@ -124,9 +124,8 @@ public class AuctioneerController {
 		model.addAttribute("description" , event.getDescAuction());
 		model.addAttribute("items", event.getAuction_items());
 		
-		 List<SoldItem> soldItems = soldItemRepo.findAll();
-	     model.addAttribute( "soldItem",soldItems);
-	     model.addAttribute("soldItemsSize" , soldItems.size());
+		List<SoldItem> soldItems = soldItemRepo.findAll();
+	    model.addAttribute( "soldItem",soldItems);
 		
 	     return "auctioneerEventView";
 	}
