@@ -1,27 +1,35 @@
 package com.example.demo.entity;
 
-public class newBid {
+public class Bid {
 	
+	private int inventoryId;
 	private int bidderId;
 	private String bidderName;
 	private int newBidValue;
 	
-
-	public newBid() {
+	
+	public Bid() {
 	
 	}
 	
-
-
-	public newBid(int bidderId, String bidderName, int newBidValue) {
+	public Bid(int inventoryId, int bidderId, String bidderName, int newBidValue) {
 		super();
+		this.inventoryId = inventoryId;
 		this.bidderId = bidderId;
 		this.bidderName = bidderName;
 		this.newBidValue = newBidValue;
 	}
-
-
 	
+	
+
+	public int getInventoryId() {
+		return inventoryId;
+	}
+
+	public void setInventoryId(int inventoryId) {
+		this.inventoryId = inventoryId;
+	}
+
 	public int getBidderId() {
 		return bidderId;
 	}

@@ -136,7 +136,6 @@ https://templatemo.com/tm-548-training-studio
                               			<input type="number" id = "greetings${inventory.inventoryId}" value="${inventory.soldPrice}" disabled="disabled">
                 
                               			<button disabled="disabled" id="send${inventory.inventoryId}" class="btn btn-default">Bid</button>
-						      			<button disabled="disabled" id="connect${inventory.inventoryId}" class="btn btn-default">Start Bid</button>
                              			
                              			<br>
                               			<p>Winner Bidder Id :</p>
@@ -154,8 +153,8 @@ https://templatemo.com/tm-548-training-studio
                               			<input type="number" id = "bidInput${inventory.inventoryId}" value=0>
                               			
 						      			
-						      			<button id="send${inventory.inventoryId}" class="btn btn-default" type="submit" onclick="sendBid('${bidderId}' , '${bidderName}' ,'${inventory.inventoryId}')">Bid</button>
-						      			<button id="connect${inventory.inventoryId}" class="btn btn-default" type="submit" onclick="connect('${inventory.inventoryId}')">Start Bid</button>
+						      			<button id="send${inventory.inventoryId}" class="btn btn-default" type="submit" onclick="sendBid('${inventory.inventoryId}' ,'${bidderId}' , '${bidderName}' ,'${inventory.inventoryId}')">Bid</button>
+						      			
 						      			
 						      			<br>
                               			<p>Highest Bidder Id :</p>

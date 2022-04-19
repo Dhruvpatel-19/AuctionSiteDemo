@@ -1,19 +1,19 @@
 var stompClient = null;
 
 
-function connect(id) {
+//function connect(id) {
     var socket = new SockJS('/bidwebsocket');
-    console.log('Inventory wih id'+id+' is connected');
+    //console.log('Inventory wih id'+id+' is connected');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
       
         console.log('Connected: ' + frame);
         
-        $("#connect"+id).prop('disabled', true);
+        //$("#connect"+id).prop('disabled', true);
         
         stompClient.subscribe('/bid/newBid', function (newBid1) {
 			//console.log("newBid value "+newBid1.body);
-            newBid(JSON.parse(newBid1.body),id);
+            newBid(JSON.parse(newBid1.body));
         });
         
         stompClient.subscribe('/bid/placebid', function () {
@@ -21,7 +21,7 @@ function connect(id) {
         });
         
     });
-}
+//}
 
 
 function showBid(){
@@ -48,14 +48,14 @@ function disconnect(id) {
 }
 
 
-function sendBid(bidderId,bidderName,id) {
+function sendBid( inventoryId , bidderId,bidderName,id) {
 	console.log("bidderId : "+bidderId);
 	
 	//$("#send"+id).prop('disabled', true);
 	if(stompClient != null){
 		if( Number($("#bidInput"+id).val()) >  Number($("#highBid"+id).val()))
 		{
-    		stompClient.send("/app/addBid", {}, JSON.stringify({'bidderId' : Number(bidderId), 'bidderName': bidderName ,'oldBidValue': Number($("#bidInput"+id).val())}));
+    		stompClient.send("/app/addBid", {}, JSON.stringify({'inventoryId' :  Number(inventoryId) ,'bidderId' : Number(bidderId), 'bidderName': bidderName ,'newBidValue': Number($("#bidInput"+id).val())}));
     	}
     	else{
 		
@@ -77,12 +77,12 @@ function acceptBid(id) {
 
 
 
-function newBid(bidValue,id) {
+function newBid(bidValue) {
     
-  console.log("Inside newBid id : "+id);
-  document.getElementById("highBid"+id).value = bidValue.newBidValue;
-  document.getElementById("highBidId"+id).value = bidValue.bidderId;
-  document.getElementById("highBidName"+id).value = bidValue.bidderName;
+  console.log("Inside newBid id : "+bidValue.inventoryId);
+  document.getElementById("highBid"+bidValue.inventoryId).value = bidValue.newBidValue;
+  document.getElementById("highBidId"+bidValue.inventoryId).value = bidValue.bidderId;
+  document.getElementById("highBidName"+bidValue.inventoryId).value = bidValue.bidderName;
   
 }
 
