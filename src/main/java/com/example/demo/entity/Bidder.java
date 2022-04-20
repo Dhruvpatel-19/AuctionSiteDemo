@@ -22,11 +22,14 @@ public class Bidder {
 	private String email;
     private String contact;
     
-    @OneToMany(targetEntity = Inventory.class , cascade = CascadeType.ALL)
-	@JoinColumn(name="bidder_id_fk",referencedColumnName = "id")
+   @OneToMany(targetEntity = Inventory.class , cascade = CascadeType.ALL)
+	//@JoinColumn(name="bidder_id_fk",referencedColumnName = "id")
 	private List<Inventory> auctionItems = new ArrayList<>();
     
     
+   /* @OneToMany(mappedBy = "bidder")
+    private List<Inventory> auctionItems = new ArrayList<>();
+    */
 	public Bidder() {
 		super();
 		// TODO Auto-generated constructor stub

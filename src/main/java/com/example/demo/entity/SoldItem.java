@@ -1,14 +1,9 @@
 package com.example.demo.entity;
 
 
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class SoldItem {
 	
-	@Id
+	
 	private int inventoryId;
 	private int soldPrice;
 	private int bidderId;

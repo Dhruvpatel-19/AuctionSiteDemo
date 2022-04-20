@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Auctioneer;
-import com.example.demo.entity.SoldItem;
+
 import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.AuctioneerRepository;
-import com.example.demo.repository.SoldItemRepository;
+
 
 @Controller
 public class AuctioneerController {
@@ -32,8 +32,7 @@ public class AuctioneerController {
 	@Autowired
 	private AuctioneerRepository auctioneerRepo;
 	
-	@Autowired
-	private SoldItemRepository soldItemRepo;
+	
 	
 	@RequestMapping(value = "/auctioneer/signUp" , method = RequestMethod.GET )
 	public String auctioneerSignUp() {
@@ -124,8 +123,7 @@ public class AuctioneerController {
 		model.addAttribute("description" , event.getDescAuction());
 		model.addAttribute("items", event.getAuction_items());
 		
-		List<SoldItem> soldItems = soldItemRepo.findAll();
-	    model.addAttribute( "soldItem",soldItems);
+		
 		
 	     return "auctioneerEventView";
 	}

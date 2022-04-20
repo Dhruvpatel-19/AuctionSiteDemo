@@ -15,7 +15,7 @@ import com.example.demo.entity.Inventory;
 import com.example.demo.entity.SoldItem;
 import com.example.demo.repository.BidderRepository;
 import com.example.demo.repository.InventoryRepository;
-import com.example.demo.repository.SoldItemRepository;
+
 
 @Controller
 public class WebController {
@@ -26,8 +26,6 @@ public class WebController {
 	@Autowired
 	private BidderRepository bidderRepo;
 	
-	@Autowired
-	private SoldItemRepository soldItemRepo;
 	
 	@MessageMapping("/addBid")
 	@SendTo("/bid/newBid")
@@ -50,6 +48,8 @@ public class WebController {
 		Inventory inv = inventoryRepo.findById(soldItem.getInventoryId()).orElse(null);
 		inv.setSoldPrice(soldItem.getSoldPrice());
 		inv.setIsSold(true);
+		inv.setBidder(b);
+		
 		
 		List<Inventory> listInventory = bidderRepo.findAuctionItemsByBidder(soldItem.getBidderId());
 	
@@ -61,7 +61,7 @@ public class WebController {
 		bidderRepo.save(b);
 		
 		
-		return soldItemRepo.save(soldItem);
+		return soldItem;
 	}
 
 }

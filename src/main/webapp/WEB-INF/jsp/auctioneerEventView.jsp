@@ -137,11 +137,11 @@ https://templatemo.com/tm-548-training-studio
     										
                     		  				<button disabled="disabled" id="disconnect${inventory.inventoryId}" class="btn btn-default">Accept Bid</button>
                     		  				
-                    		  				<br>
+                             				<br>
                               				<p>Winner Bidder Id :</p>
-                              				<input id = "highBidId${inventory.inventoryId}" value="${soldItem.get(inventory.inventoryId - 1).bidderId}" disabled="disabled">
+                              				<input id = "highBidId${inventory.inventoryId}" value="${inventory.bidder.id}" disabled="disabled">
                               				<p>Winner Bidder:</p>
-                             				<input id = "highBidName${inventory.inventoryId}" value="${soldItem.get(inventory.inventoryId - 1).bidderName}" disabled="disabled">		 					
+                             				<input id = "highBidName${inventory.inventoryId}" value="${inventory.bidder.name}" disabled="disabled"> 	 					
     									</c:when>
     									    
     									<c:otherwise>

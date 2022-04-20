@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -20,12 +21,15 @@ public class Inventory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int inventoryId; //inventory_id
      
-     private int soldPrice;
-     private int start_bid;
-     private String descInventory;
-     private String name;
-     private String image;
-     private boolean isSold = false;
+    private int soldPrice;
+    private int start_bid;
+    private String descInventory;
+    private String name;
+    private String image;
+    private boolean isSold = false;
+    
+    @ManyToOne
+    private Bidder bidder;
      
 
 	public Inventory() {
@@ -35,7 +39,7 @@ public class Inventory {
 
 
 	public Inventory(int inventoryId, int soldPrice, int start_bid, String descInventory, String name, String image,
-			boolean isSold) {
+			boolean isSold, Bidder bidder) {
 		super();
 		this.inventoryId = inventoryId;
 		this.soldPrice = soldPrice;
@@ -44,8 +48,8 @@ public class Inventory {
 		this.name = name;
 		this.image = image;
 		this.isSold = isSold;
+		this.bidder = bidder;
 	}
-	
 
 
 	public int getInventoryId() {
@@ -63,11 +67,9 @@ public class Inventory {
 	}
 
 
-
 	public void setSoldPrice(int soldPrice) {
 		this.soldPrice = soldPrice;
 	}
-
 
 
 	public int getStart_bid() {
@@ -75,11 +77,9 @@ public class Inventory {
 	}
 
 
-
 	public void setStart_bid(int start_bid) {
 		this.start_bid = start_bid;
 	}
-
 
 
 	public String getDescInventory() {
@@ -87,11 +87,9 @@ public class Inventory {
 	}
 
 
-
 	public void setDescInventory(String descInventory) {
 		this.descInventory = descInventory;
 	}
-
 
 
 	public String getName() {
@@ -99,11 +97,9 @@ public class Inventory {
 	}
 
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 
 	public String getImage() {
@@ -111,11 +107,9 @@ public class Inventory {
 	}
 
 
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 
 
 	public boolean getIsSold() {
@@ -123,12 +117,19 @@ public class Inventory {
 	}
 
 
-
 	public void setIsSold(boolean isSold) {
 		this.isSold = isSold;
-	}         
+	}
 
 
+	public Bidder getBidder() {
+		return bidder;
+	}
+
+
+	public void setBidder(Bidder bidder) {
+		this.bidder = bidder;
+	}
 	
 	
      

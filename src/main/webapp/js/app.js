@@ -1,27 +1,23 @@
 var stompClient = null;
 
 
-//function connect(id) {
-    var socket = new SockJS('/bidwebsocket');
-    //console.log('Inventory wih id'+id+' is connected');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
+var socket = new SockJS('/bidwebsocket');
+  
+	stompClient = Stomp.over(socket);
+	stompClient.connect({}, function (frame) {
       
-        console.log('Connected: ' + frame);
+	console.log('Connected: ' + frame);
         
-        //$("#connect"+id).prop('disabled', true);
+	stompClient.subscribe('/bid/newBid', function (newBid1) {
+		//console.log("newBid value "+newBid1.body);
+		newBid(JSON.parse(newBid1.body));
+	});
         
-        stompClient.subscribe('/bid/newBid', function (newBid1) {
-			//console.log("newBid value "+newBid1.body);
-            newBid(JSON.parse(newBid1.body));
-        });
-        
-        stompClient.subscribe('/bid/placebid', function () {
-            showBid();
-        });
-        
+    stompClient.subscribe('/bid/placebid', function () {
+        showBid();
     });
-//}
+        
+});
 
 
 function showBid(){

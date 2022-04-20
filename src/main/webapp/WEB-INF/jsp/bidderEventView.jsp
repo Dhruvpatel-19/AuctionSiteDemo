@@ -136,12 +136,12 @@ https://templatemo.com/tm-548-training-studio
                               			<input type="number" id = "greetings${inventory.inventoryId}" value="${inventory.soldPrice}" disabled="disabled">
                 
                               			<button disabled="disabled" id="send${inventory.inventoryId}" class="btn btn-default">Bid</button>
-                             			
+                              			           			
                              			<br>
-                              			<p>Winner Bidder Id :</p>
-                              			<input id = "highBidId${inventory.inventoryId}" value="${soldItem.get(inventory.inventoryId - 1).bidderId}" disabled="disabled">
-                              			<p>Winner Bidder:</p>
-                             			<input id = "highBidName${inventory.inventoryId}" value="${soldItem.get(inventory.inventoryId - 1).bidderName}" disabled="disabled">	
+                              				<p>Winner Bidder Id :</p>
+                              				<input id = "highBidId${inventory.inventoryId}" value="${inventory.bidder.id}" disabled="disabled">
+                              				<p>Winner Bidder:</p>
+                             				<input id = "highBidName${inventory.inventoryId}" value="${inventory.bidder.name}" disabled="disabled">	
                               			
 						      		</c:when>  
 						      		
