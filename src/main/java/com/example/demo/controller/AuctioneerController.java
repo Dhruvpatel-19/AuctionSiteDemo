@@ -84,12 +84,6 @@ public class AuctioneerController {
 		  
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/app/bidCompleted" )
-	public String bidCompleted(@RequestParam("inventoryId") int inventoryId , @RequestParam("userID")int uid , @RequestParam("soldPrice")int price) {
-		System.out.println("inventoryId:"+inventoryId+" userID"+uid+" soldPrice"+price);
-		return "done";
-	}
 	
 	@RequestMapping( value = "/auctioneer/dashboard" , method = RequestMethod.GET)
 	public String bidderDashboard(Model model) {
@@ -122,10 +116,24 @@ public class AuctioneerController {
 		model.addAttribute("auctionName", event.getEventName());
 		model.addAttribute("description" , event.getDescAuction());
 		model.addAttribute("items", event.getAuction_items());
-		
-		
-		
+
 	     return "auctioneerEventView";
 	}
-
+	
+	@RequestMapping( value = "/auctioneer/logout" , method = RequestMethod.GET)
+	public String eventView(HttpServletRequest request ,  HttpServletResponse response) {
+		
+		Cookie[] c = request.getCookies();
+	       for(int i=0; i<c.length; i++)
+	       {
+	           if(c[i].getName().equals("auctioneer"))
+	           {
+	        	   c[i].setPath("/");
+	        	   c[i].setMaxAge(0);
+	        	   response.addCookie(c[i]);
+	        	   break;
+	           }
+	       }  
+	     return "auctioneerSignIn";
+	}
 }

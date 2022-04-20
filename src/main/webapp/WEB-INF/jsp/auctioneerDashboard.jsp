@@ -35,13 +35,9 @@
                     <p class="mb-4">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                     </p>
-                    <div class="d-flex justify-content-center mb-5">
-                        <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-primary mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    
                     <a href="/auctionCatalog" style="background-color:green" class="btn btn-lg btn-block btn-primary mt-auto">Add Auction Events</a>
+                   <!--  <a href="/auctioneer/logout" style="background-color:red" class="btn btn-lg btn-block btn-primary mt-auto">Log Out</a> -->
                 </div>
                 <div class="sidebar-icon d-flex flex-column h-100 justify-content-center text-right">
                     <i class="fas fa-2x fa-angle-double-right text-primary"></i>
@@ -60,8 +56,7 @@
                             <div class="navbar-nav m-auto">
                                 <a href="index.html" class="nav-item nav-link active">Home</a>
                                 <a href="about.html" class="nav-item nav-link">About</a>
-                                
-                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <a href="/auctioneer/logout" class="nav-item nav-link">Log Out</a>
                             </div>
                         </div>
                     </nav>

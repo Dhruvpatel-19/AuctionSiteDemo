@@ -42,7 +42,7 @@ public class CatalogController {
 		return "auctionCatalog";
 	}
 	
-	@ResponseBody
+	//@ResponseBody
 	@RequestMapping(value = "/auctionhouse/auction" , method = RequestMethod.POST) 
 	public String addAuction(@ModelAttribute AuctionEvent auctionEvent , @RequestParam("auctionImage") MultipartFile fileAuction,@RequestParam("name") ArrayList<String> itemName ,  @RequestParam("image") ArrayList<MultipartFile> file  , @RequestParam("start_bid") ArrayList<Integer> start_bid , @RequestParam("descInventory") ArrayList<String>  descInventory) {
     try{	 
@@ -81,12 +81,12 @@ public class CatalogController {
 		}
 		auctionEvent.setAuction_items(list);
 		auctionRepo.save(auctionEvent);
-		return "Auction created successfully";
+		return "redirect:/auctioneer/dashboard";
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return "failure";
+			return "Home";
 			
 		}
 	}

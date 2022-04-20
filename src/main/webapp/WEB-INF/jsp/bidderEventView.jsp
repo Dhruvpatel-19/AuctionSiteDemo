@@ -109,7 +109,6 @@ https://templatemo.com/tm-548-training-studio
                     </div>
                 </div>
                 
-               
                 <div class="col-lg-6">
                  <c:forEach var="inventory" items="${items}">
                     <ul class="features-items">

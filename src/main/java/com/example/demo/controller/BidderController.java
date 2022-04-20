@@ -82,7 +82,6 @@ public class BidderController {
 	@RequestMapping(value = "/bidder/signIn" , method = RequestMethod.POST)
 	public String bidderSignInPost( HttpServletResponse response , @RequestParam("email") String email , @RequestParam("password")String password ,  Model m ) {
 		
-		  
 		  if(!bidderRepo.existsByEmail(email)) {
 				m.addAttribute("message", "email doesn't exists , Sign up here");
 				return "bidderSignUp";
@@ -95,7 +94,7 @@ public class BidderController {
 			  System.out.println(password +" type: " +password.getClass().getSimpleName());
 			  System.out.println(bidder.getPassword() +" type: "+ bidder.getPassword().getClass().getSimpleName());
 			  
-			  Cookie c=new Cookie("bidder", email);
+			  Cookie c = new Cookie("bidder", email);
 			  c.setPath("/");
 			  response.addCookie(c);
 			  
@@ -126,7 +125,7 @@ public class BidderController {
 		
 		System.out.println("----------------------------");
 		String cookieinemail = null;
-        Cookie[]  c1=request.getCookies();
+        Cookie[]  c1 =request.getCookies();
         for (Cookie c: c1)
         {
         	System.out.println("Name :"+c.getName()+" Email :"+c.getValue());
@@ -147,5 +146,20 @@ public class BidderController {
 	}
 	
 	
-	
+	@RequestMapping( value = "/bidder/logout" , method = RequestMethod.GET)
+	public String eventView(HttpServletRequest request ,  HttpServletResponse response) {
+		
+		Cookie[] c = request.getCookies();
+	       for(int i=0; i<c.length; i++)
+	       {
+	           if(c[i].getName().equals("bidder"))
+	           {
+	        	   c[i].setPath("/");
+	        	   c[i].setMaxAge(0);
+	        	   response.addCookie(c[i]);
+	        	   break;
+	           }
+	       }  
+	     return "bidderSignIn";
+	}
 }

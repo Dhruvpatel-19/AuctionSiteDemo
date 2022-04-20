@@ -49,6 +49,8 @@ function sendBid( inventoryId , bidderId,bidderName,id) {
 	
 	//$("#send"+id).prop('disabled', true);
 	if(stompClient != null){
+	
+		
 		if( Number($("#bidInput"+id).val()) >  Number($("#highBid"+id).val()))
 		{
     		stompClient.send("/app/addBid", {}, JSON.stringify({'inventoryId' :  Number(inventoryId) ,'bidderId' : Number(bidderId), 'bidderName': bidderName ,'newBidValue': Number($("#bidInput"+id).val())}));
@@ -66,14 +68,15 @@ function sendBid( inventoryId , bidderId,bidderName,id) {
 
 
 function acceptBid(id) {
-	console.log( "Id input  :  " +$("#highId"+id).val());
-    console.log("Name input :  " +$("#highName"+id).val());
+	//console.log( "Id input  :  " +$("#highBidId"+id).val());
+    //console.log("Name input :  " +$("#highBidName"+id).val());
     
-    if(document.getElementById("highBidId3").value != "None"){
+    //if(document.getElementById("highBidId"+id).value != "None")
+    if($("#highBidId"+id).val()!= "None"){
     	stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventoryId' : Number(id) , 'soldPrice': Number($("#highBid"+id).val()) , 'bidderId':Number($("#highBidId"+id).val()) , 'bidderName': $("#highBidName"+id).val() }));
     }
     else{
-		alert("No one has bidded for this item");
+		alert("No one has bided for this item");
 	}
 }
 
