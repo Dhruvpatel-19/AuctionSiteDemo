@@ -66,9 +66,15 @@ function sendBid( inventoryId , bidderId,bidderName,id) {
 
 
 function acceptBid(id) {
+	console.log( "Id input  :  " +$("#highId"+id).val());
+    console.log("Name input :  " +$("#highName"+id).val());
     
-    stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventoryId' : Number(id) , 'soldPrice': Number($("#highBid"+id).val()) , 'bidderId':Number($("#highBidId"+id).val()) , 'bidderName': $("#highBidName"+id).val() }));
-    
+    if(document.getElementById("highBidId3").value != "None"){
+    	stompClient.send("/app/bidCompleted", {}, JSON.stringify({'inventoryId' : Number(id) , 'soldPrice': Number($("#highBid"+id).val()) , 'bidderId':Number($("#highBidId"+id).val()) , 'bidderName': $("#highBidName"+id).val() }));
+    }
+    else{
+		alert("No one has bidded for this item");
+	}
 }
 
 
