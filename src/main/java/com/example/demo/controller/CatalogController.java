@@ -5,23 +5,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
+
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.entity.AuctionEvent;
-import com.example.demo.entity.Bidder;
 import com.example.demo.entity.Inventory;
 import com.example.demo.repository.AuctionEventRepository;
-import com.example.demo.repository.BidderRepository;
 
 
 
@@ -31,18 +30,29 @@ public class CatalogController {
 	@Autowired
 	private AuctionEventRepository auctionRepo;
 	
-	@Autowired
-	private BidderRepository bidderRepo;
+	//@Autowired
+	//private BidderRepository bidderRepo;
 	
 	public static final String uploadingdDirInventory = System.getProperty("user.dir") + "/src/main/webapp/catalogimage" ; 
 	public static final String uploadingdDirAuction = System.getProperty("user.dir") + "/src/main/webapp/auctionimage" ;
 	
 	@RequestMapping(value ="/auctionCatalog" , method = RequestMethod.GET )
-	public String auctionCatalog() {
-		return "auctionCatalog";
+	public String auctionCatalog(HttpServletRequest request) {
+		Cookie[] c1 = request.getCookies();
+		
+		if(c1 != null) {
+			for(Cookie c : c1) {
+				if(c.getName().equals("auctioneer")) {
+					return "auctionCatalog";
+				}
+			}
+			
+			return "redirect:/auctioneer/signIn";
+		}
+		return "redirect:/auctioneer/signIn";
 	}
 	
-	//@ResponseBody
+
 	@RequestMapping(value = "/auctionhouse/auction" , method = RequestMethod.POST) 
 	public String addAuction(@ModelAttribute AuctionEvent auctionEvent , @RequestParam("auctionImage") MultipartFile fileAuction,@RequestParam("name") ArrayList<String> itemName ,  @RequestParam("image") ArrayList<MultipartFile> file  , @RequestParam("start_bid") ArrayList<Integer> start_bid , @RequestParam("descInventory") ArrayList<String>  descInventory) {
     try{	 
@@ -77,7 +87,7 @@ public class CatalogController {
 	        }
 	        inventory.setImage(filename);
 	        list.add(inventory);
-	        //inventoryRepo.save(inventory);
+	        
 		}
 		auctionEvent.setAuction_items(list);
 		auctionRepo.save(auctionEvent);
@@ -91,20 +101,18 @@ public class CatalogController {
 		}
 	}
 	
-	@ResponseBody
-	//@RequestMapping(value ="/bidder/{id}/items" , method = RequestMethod.GET )
+	/*@ResponseBody
 	@RequestMapping(value ="/invenotoryByBidderId/{id}" , method = RequestMethod.GET )
 	public List<Inventory> getAllAuctionItems(@PathVariable("id") int id) {
 		System.out.println("List Type " +bidderRepo.findAuctionItemsByBidder(id).getClass());
 		return bidderRepo.findAuctionItemsByBidder(id);
-	}
+	}*/
 	
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value ="/bidderByInventoryId/{id}" , method = RequestMethod.GET )
 	public Bidder getBidderByAuctionItems(@PathVariable("id") int id) {
-		
 		return bidderRepo.findByAuctionItems_InventoryId(id);
-	}
+	}*/
 	
 	
 }

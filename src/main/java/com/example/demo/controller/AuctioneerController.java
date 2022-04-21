@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Auctioneer;
@@ -31,7 +31,6 @@ public class AuctioneerController {
 	
 	@Autowired
 	private AuctioneerRepository auctioneerRepo;
-	
 	
 	
 	@RequestMapping(value = "/auctioneer/signUp" , method = RequestMethod.GET )
@@ -53,10 +52,12 @@ public class AuctioneerController {
 		return "auctioneerSignIn";
 	}
 	
+	
 	@RequestMapping(value = "/auctioneer/signIn" , method = RequestMethod.GET )
 	public String auctioneerSignIn() {
 		return "auctioneerSignIn";
 	}
+	
 	
 	@RequestMapping(value = "/auctioneer/signIn" , method = RequestMethod.POST)
 	public String auctioneerSignInPost(HttpServletResponse response ,@RequestParam("email") String email , @RequestParam("password")String password , Model m) {
@@ -78,46 +79,61 @@ public class AuctioneerController {
 			  return "redirect:/auctioneer/dashboard"; 
 		 }
 		  
-		  m.addAttribute("message", "Wrong Credentials! , try again");
+		 m.addAttribute("message", "Wrong Credentials! , try again");
 		  
 		 return "auctioneerSignIn";
-		  
 	}
 	
 	
 	@RequestMapping( value = "/auctioneer/dashboard" , method = RequestMethod.GET)
-	public String bidderDashboard(Model model) {
-		List<AuctionEvent> auctionList = auctionRepo.findAll(); 
-		model.addAttribute("auctionList", auctionList);
-		return "auctioneerDashboard";
+	public String bidderDashboard(HttpServletRequest request , Model model) {
+		
+		Cookie[] c1 = request.getCookies();
+		if(c1 != null) {
+			for(Cookie c : c1)
+			{
+				if(c.getName().equals("auctioneer")) {
+					
+					List<AuctionEvent> auctionList = auctionRepo.findAll(); 
+					model.addAttribute("auctionList", auctionList);
+					return "auctioneerDashboard";
+				}
+			}
+			
+			return "redirect:/auctioneer/signIn";
+		}
+		return "redirect:/auctioneer/signIn";
 	}
 	
 	
 	@RequestMapping( value = "/auctioneer/event/{event_id}" , method = RequestMethod.GET)
 	public String eventView(HttpServletRequest request ,@PathVariable("event_id")int event_id , Model model) {
-		
-		
-		String cookieinemail = null;
-        Cookie[]  c1=request.getCookies();
-        for (Cookie c: c1)
-        {   
-        	
-        	System.out.println("Name :"+c.getName()+" Email :"+c.getValue());
-        	
-            if(c.getName().equals("auctioneer"))
-            {
-                cookieinemail=c.getValue();
-                System.out.println("Auctioneer : "+cookieinemail);
-            }
-        }
-     
-		
-		AuctionEvent event = auctionRepo.findById(event_id).orElse(null);
-		model.addAttribute("auctionName", event.getEventName());
-		model.addAttribute("description" , event.getDescAuction());
-		model.addAttribute("items", event.getAuction_items());
-
-	     return "auctioneerEventView";
+	
+	String cookieinemail = null;
+    Cookie[]  c1 = request.getCookies();
+    if(c1 != null) { 
+	        for (Cookie c: c1)
+	        {   
+	        	
+	        	System.out.println("Name :"+c.getName()+" Email :"+c.getValue());
+	        	
+	            if(c.getName().equals("auctioneer"))
+	            {
+	                cookieinemail=c.getValue();
+	                System.out.println("Auctioneer : "+cookieinemail);
+	                
+	                AuctionEvent event = auctionRepo.findById(event_id).orElse(null);
+	        		model.addAttribute("auctionName", event.getEventName());
+	        		model.addAttribute("description" , event.getDescAuction());
+	        		model.addAttribute("items", event.getAuction_items());
+	
+	        	     return "auctioneerEventView";
+	            }
+	        }
+	        
+	        return "redirect:/auctioneer/signIn";
+    	}
+    	return "redirect:/auctioneer/signIn";
 	}
 	
 	@RequestMapping( value = "/auctioneer/logout" , method = RequestMethod.GET)
@@ -134,6 +150,6 @@ public class AuctioneerController {
 	        	   break;
 	           }
 	       }  
-	     return "auctioneerSignIn";
+	     return "redirect:/auctioneer/signIn";
 	}
 }
