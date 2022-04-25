@@ -40,14 +40,16 @@ public class CatalogController {
 	public String auctionCatalog(HttpServletRequest request) {
 		Cookie[] c1 = request.getCookies();
 		
-		for(Cookie c : c1) {
-			if(c.getName().equals("auctioneer")) {
-				return "auctionCatalog";
+		if(c1 != null) {
+			for(Cookie c : c1) {
+				if(c.getName().equals("auctioneer")) {
+					return "auctionCatalog";
+				}
 			}
-		}	
-		
+			
+			return "redirect:/auctioneer/signIn";
+		}
 		return "redirect:/auctioneer/signIn";
-		
 	}
 	
 
