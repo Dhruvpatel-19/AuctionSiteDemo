@@ -109,21 +109,18 @@ public class BidderController {
 		
         Cookie[]  c1 =request.getCookies();
         
-        if(c1 != null) {     
-			for (Cookie c: c1)
-        	{
-			 	if(c.getName().equals("bidder"))
-			 	{
-				 	List<AuctionEvent> auctionList = auctionRepo.findAll(); 
-				 	model.addAttribute("auctionList", auctionList);
-				 	return "bidderDashboard";
-	        	}
-        	}
-		
-			return "redirect:/bidder/signIn";
+		for (Cookie c: c1)
+        {
+			 if(c.getName().equals("bidder"))
+			 {
+				 List<AuctionEvent> auctionList = auctionRepo.findAll(); 
+				 model.addAttribute("auctionList", auctionList);
+				 return "bidderDashboard";
+	        }
         }
-   
-    	return "redirect:/bidder/signIn";
+		
+		return "redirect:/bidder/signIn";
+      
 	}
 	
 	
@@ -132,32 +129,29 @@ public class BidderController {
 		
 		String cookieinemail = null;
         Cookie[]  c1 =request.getCookies();
-        if(c1 != null) { 
-        	for (Cookie c: c1)
-        	{
-        		System.out.println("Name :"+c.getName()+" Email :"+c.getValue());
+  
+        for (Cookie c: c1)
+        {
+        	System.out.println("Name :"+c.getName()+" Email :"+c.getValue());
         	
-        		if(c.getName().equals("bidder"))
-        		{
-        			cookieinemail=c.getValue();
-        			System.out.println("Bidder : "+cookieinemail);
+        	if(c.getName().equals("bidder"))
+        	{
+        		cookieinemail=c.getValue();
+        		System.out.println("Bidder : "+cookieinemail);
                 
-        			AuctionEvent event = auctionRepo.findById(event_id).orElse(null);
-        			model.addAttribute("auctionName", event.getEventName());
-        			model.addAttribute("description" , event.getDescAuction());
-        			model.addAttribute("items", event.getAuction_items());
+        		AuctionEvent event = auctionRepo.findById(event_id).orElse(null);
+        		model.addAttribute("auctionName", event.getEventName());
+        		model.addAttribute("description" , event.getDescAuction());
+        		model.addAttribute("items", event.getAuction_items());
                 
-	                Bidder b = bidderRepo.findByEmail(cookieinemail);
-	                model.addAttribute("bidderId", b.getId());
-	                model.addAttribute("bidderName", b.getName());
-	                
-	        		return "bidderEventView";
-        		}
+	            Bidder b = bidderRepo.findByEmail(cookieinemail);
+	            model.addAttribute("bidderId", b.getId());
+	            model.addAttribute("bidderName", b.getName());
+	            
+	        	return "bidderEventView";
         	}
-        	return "redirect:/bidder/signIn";
         }
-       
-        return "redirect:/bidder/signIn";
+        	return "redirect:/bidder/signIn";
 	}
 	
 	

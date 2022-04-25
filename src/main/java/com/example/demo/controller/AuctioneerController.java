@@ -89,20 +89,19 @@ public class AuctioneerController {
 	public String bidderDashboard(HttpServletRequest request , Model model) {
 		
 		Cookie[] c1 = request.getCookies();
-		if(c1 != null) {
-			for(Cookie c : c1)
-			{
-				if(c.getName().equals("auctioneer")) {
+		
+		for(Cookie c : c1)
+		{
+			if(c.getName().equals("auctioneer")) {
 					
-					List<AuctionEvent> auctionList = auctionRepo.findAll(); 
-					model.addAttribute("auctionList", auctionList);
-					return "auctioneerDashboard";
-				}
+				List<AuctionEvent> auctionList = auctionRepo.findAll(); 
+				model.addAttribute("auctionList", auctionList);
+				return "auctioneerDashboard";
 			}
-			
-			return "redirect:/auctioneer/signIn";
 		}
+			
 		return "redirect:/auctioneer/signIn";
+		
 	}
 	
 	
@@ -111,7 +110,7 @@ public class AuctioneerController {
 	
 	String cookieinemail = null;
     Cookie[]  c1 = request.getCookies();
-    if(c1 != null) { 
+   
 	        for (Cookie c: c1)
 	        {   
 	        	
@@ -132,8 +131,7 @@ public class AuctioneerController {
 	        }
 	        
 	        return "redirect:/auctioneer/signIn";
-    	}
-    	return "redirect:/auctioneer/signIn";
+    	
 	}
 	
 	@RequestMapping( value = "/auctioneer/logout" , method = RequestMethod.GET)
