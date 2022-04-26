@@ -23,6 +23,7 @@ public class Auctioneer {
 	private String password;
 	private String email;
     private String contact;
+    private String role;
     
 	@OneToMany(targetEntity = AuctionEvent.class , cascade = CascadeType.ALL)
 	@JoinColumn(name="auctioneer_id_fk",referencedColumnName = "id")
@@ -95,8 +96,13 @@ public class Auctioneer {
 	public void setAuctionEvent(List<AuctionEvent> auctionEvent) {
 		this.auctionEvent = auctionEvent;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
  
-    
 
 }
 

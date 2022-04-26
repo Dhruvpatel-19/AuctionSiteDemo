@@ -21,6 +21,7 @@ import com.example.demo.entity.Auctioneer;
 
 import com.example.demo.repository.AuctionEventRepository;
 import com.example.demo.repository.AuctioneerRepository;
+import com.example.demo.repository.BidderRepository;
 
 
 @Controller
@@ -32,6 +33,8 @@ public class AuctioneerController {
 	@Autowired
 	private AuctioneerRepository auctioneerRepo;
 	
+	@Autowired
+	private BidderRepository bidderRepo;
 	
 	@RequestMapping(value = "/auctioneer/signUp" , method = RequestMethod.GET )
 	public String auctioneerSignUp() {
@@ -42,11 +45,11 @@ public class AuctioneerController {
 	@RequestMapping(value = "/auctioneer/signUp" , method = RequestMethod.POST )
 	public String auctioneerSignUpAfter(@ModelAttribute Auctioneer a , Model m) {
 		
-		if(auctioneerRepo.existsByEmail(a.getEmail())){
+		if(auctioneerRepo.existsByEmail(a.getEmail()) || bidderRepo.existsByEmail(a.getEmail())){
 			m.addAttribute("message", "email already exists , try another one");
 			return "auctioneerSignUp";
 		}
-		
+		a.setRole("Auctioneer");
 		auctioneerRepo.save(a);
 		m.addAttribute("message", "Signed Up Successfully");
 		return "auctioneerSignIn";

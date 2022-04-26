@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.AuctionEvent;
 import com.example.demo.entity.Bidder;
 import com.example.demo.repository.AuctionEventRepository;
+import com.example.demo.repository.AuctioneerRepository;
 import com.example.demo.repository.BidderRepository;
 
 
@@ -28,6 +29,9 @@ import com.example.demo.repository.BidderRepository;
 public class BidderController {
 	@Autowired
 	private BidderRepository bidderRepo;
+	
+	@Autowired
+	private AuctioneerRepository auctioneerRepo;
 	
 	@Autowired
 	private AuctionEventRepository auctionRepo;
@@ -48,11 +52,12 @@ public class BidderController {
 	@RequestMapping(value = "/bidder/signUp" , method = RequestMethod.POST )
 	public String bidderSignUpAfter(@ModelAttribute Bidder b , Model m) {
 		
-		if(bidderRepo.existsByEmail(b.getEmail())) {
+		if(bidderRepo.existsByEmail(b.getEmail()) || auctioneerRepo.existsByEmail(b.getEmail())) {
 			m.addAttribute("message", "email already exists , try another one");
 			return "bidderSignUp";
 		}
 		System.out.println("Bidder added");
+		b.setRole("Bidder");
 		bidderRepo.save(b);
 	
 		m.addAttribute("message", "Signed Up Successfully");

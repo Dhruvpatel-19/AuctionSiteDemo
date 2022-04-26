@@ -21,6 +21,7 @@ public class Bidder {
 	private String password;
 	private String email;
     private String contact;
+    private String role;
     
    @OneToMany(targetEntity = Inventory.class , cascade = CascadeType.ALL)
 	//@JoinColumn(name="bidder_id_fk",referencedColumnName = "id")
@@ -89,8 +90,15 @@ public class Bidder {
 	public void setAuctionItems(List<Inventory> auctionItems) {
 		this.auctionItems = auctionItems;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
     
-	
 
 
 }
