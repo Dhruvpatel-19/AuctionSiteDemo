@@ -3,7 +3,7 @@
 <head>
     <title>Home Page</title>
     <!-- Include CSS File Here -->
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.min.css" />
     <!-- Include JS File Here -->
 
 </head>

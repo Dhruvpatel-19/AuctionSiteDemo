@@ -25,7 +25,7 @@ https://templatemo.com/tm-548-training-studio
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="/css/templatemo-training-studio.css">
+    <link rel="stylesheet" href="/css/templatemo-training-studio.min.css">
     
    <!--  <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
    <!--  <link href="/main.css" rel="stylesheet"> -->
@@ -59,7 +59,7 @@ https://templatemo.com/tm-548-training-studio
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">PROXI<em>BID</em></a>
+                        <a href="index.html" class="logo">AUCTION<em>SITE</em></a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -179,7 +179,7 @@ https://templatemo.com/tm-548-training-studio
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cta-content">
-                        <h2>PROXI<em>BID</em>!</h2>
+                        <h2>AUCTION<em>SITE</em>!</h2>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         <div class="main-button scroll-to-section">
                         </div>

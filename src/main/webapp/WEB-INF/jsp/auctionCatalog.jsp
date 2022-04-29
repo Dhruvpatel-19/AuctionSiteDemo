@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/css/bidstyle.css"> 
+<link rel="stylesheet" href="/css/bidstyle.min.css"> 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
 
 <section>
 <div style="top-padding:50px;">
-<h2 style="background-color:#28a745;color:white;">Proxibid - A trusted Auction Site </h2>  
+<h2 style="background-color:#28a745;color:white;">AuctionSite - A trusted Auction Platform </h2>  
 </div>
 <div class="container-fluid px-1 py-5 mx-auto">
 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="/css/SignUp.css">
+  <link rel="stylesheet" href="/css/SignUp.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   
 

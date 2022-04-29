@@ -21,7 +21,7 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="/css/bidderDashboard.css" rel="stylesheet">
+        <link href="/css/bidderDashboard.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -31,7 +31,7 @@
                     <!-- <img  src="/img/sik2.jpeg" alt="Image"> -->
                     <img  src="https://media.istockphoto.com/photos/gavel-on-auction-word-picture-id917901978?k=20&m=917901978&s=612x612&w=0&h=NULGu8-bVpy28gbW6AZbZlEVra-Q4s2rg607emPfkCs=" alt="Image">
                    <!--  for image border => class="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3" -->
-                    <h1 class="font-weight-bold">Proxibid</h1>
+                    <h1 class="font-weight-bold">Auctionsite</h1>
                     <p class="mb-4">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
                     </p>
